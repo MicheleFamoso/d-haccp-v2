@@ -10,7 +10,7 @@ const Button =({text,variant = "primary", onClick})=>{
     return(
         <button
         onClick={onClick}
-        className={ `${variantClasses} bg-btn-light font-p dark:bg-btn-dark  py-1 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light dark:hover:bg-bg-list-dark shadow-xl`}
+        className={ `${variantClasses} bg-btn-light font-p dark:bg-btn-dark  py-1 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light dark:hover:bg-icon-gray-dark shadow-xl`}
         >{text}</button>
     )
 

@@ -9,8 +9,8 @@ const Sandbox = () => {
         <div className="mb-5">
           <ThemeToggle />
         </div>{" "}
-        <h2 className="font-h text-8xl">Ciao Cioa</h2>
-        <h1 className="dark:text-accent-red p-4 font-p">
+        <h2 className="font-h text-4xl dark:text-white">Ciao Cioa</h2>
+        <h1 className="dark:text-text-secondary-dark text-text-secondary-light p-4 font-p">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quam,
           magni, u xzvcsdVfst excepturi consequuntur maxime deserunt neque
           adipisci est, aperiam minima consectetur! Nostrum provident fuga hic
