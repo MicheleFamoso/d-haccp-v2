@@ -1,4 +1,4 @@
-import React from "react"
+
 
 const VARIANTS ={
     primary:" dark:text-text-secondary-dark  text-text-secondary-light",
@@ -10,7 +10,7 @@ const Button =({text,variant = "primary", onClick})=>{
     return(
         <button
         onClick={onClick}
-        className={ `${variantClasses} bg-btn-light dark:bg-btn-dark  py-1 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light dark:hover:bg-bg-list-dark shadow-xl`}
+        className={ `${variantClasses} bg-btn-light font-p dark:bg-btn-dark  py-1 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light dark:hover:bg-bg-list-dark shadow-xl`}
         >{text}</button>
     )
 

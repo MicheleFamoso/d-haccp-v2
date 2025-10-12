@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import "tailwindcss";
+
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme{
@@ -16,7 +20,8 @@
 --color-btn-light:#ececec;
 --color-btn-dark:#2b2c2d;
 --color-accent-red:#de4742;
-
+--font-p: "Source Code Pro",sans-serif;
+--font-h:"Nunito",sans-serif;
 
 
 }
