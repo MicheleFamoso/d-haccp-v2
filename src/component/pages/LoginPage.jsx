@@ -1,13 +1,22 @@
+import LoginForm from "../organisms/LoginForm";
+
 const LoginPage = () => {
   return (
-    <div className="grid xl:grid-cols-3 grid-cols-1 w-screen h-screen ">
-      <div className=" hidden xl:block xl:col-span-2 overflow-hidden p-5 xl:p-0 md:mx-auto ">
-        <img src="/Blue and Purple Gradient Pitch Deck Presentation.zip - 1.jpeg" alt="presentation" className=" xl:w-11/12 3xl:w-12/12 rounded-3xl xl:rounded-none " />
-      </div>
-      <div>
-        <LoginPage/>
-      </div>
-    </div>
+    <div className="flex bg-section-light dark:bg-section-dark h-dvh">
+ 
+  <div className="hidden xl:flex  justify-center items-center mx-4">
+    <img
+      src="/Blue and Purple Gradient Pitch Deck Presentation.zip - 1.jpeg"
+      alt="presentation"
+      className=" md:w-4xl 3xl:w-6xl rounded-3xl"
+    />
+  </div>
+
+  <div className="flex">
+    <LoginForm />
+  </div>
+</div>
+
   );
 };
 

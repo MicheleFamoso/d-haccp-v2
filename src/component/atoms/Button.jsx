@@ -3,6 +3,8 @@
 const VARIANTS ={
     primary:" dark:text-text-secondary-dark  text-text-secondary-light",
     secondary:" dark:text-accent-red  text-accent-red",
+    accent:"dark:text-accent-blue-dark text-accent-blue-medium"
+
 }
 
 const Button =({text,variant = "primary", onClick})=>{
@@ -10,7 +12,7 @@ const Button =({text,variant = "primary", onClick})=>{
     return(
         <button
         onClick={onClick}
-        className={ `${variantClasses} bg-btn-light font-p dark:bg-btn-dark  py-1 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light dark:hover:bg-icon-gray-dark shadow-xl`}
+        className={ `${variantClasses} hover:bg-btn-light bg-bg-list-light font-h font-medium dark:bg-btn-dark  py-1 px-3 rounded-4xl  cursor-pointer  dark:hover:bg-icon-gray-dark dark:shadow-xs shadow-xl`}
         >{text}</button>
     )
 
