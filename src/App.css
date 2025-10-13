@@ -25,5 +25,6 @@
 --color-accent-blue-light: #A8E6CF ;
 --color-accent-blue-medium:#2BBBAD ;
 --color-accent-blue-dark:#00796B ;
+--breakpoint-3xl: 120rem;
 }
 
