@@ -1,17 +1,18 @@
-import ImputText from "../atoms/ImputText"
+import Input from "../atoms/Input"
 import Label from "../atoms/Label"
 
-const FormField = ({id,value,onChange,text})=>{
+const FormField = ({id,value,onChange,text, type = "text"})=>{
     return(
         <div className="flex flex-col gap-2">
             <Label
             htmlFor={id}
                text={text} 
             />
-            <ImputText
+            <Input
              value={value}
                onChange={onChange}
                  id={id}
+                 type = {type}
             />
         </div>
     )

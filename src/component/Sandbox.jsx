@@ -25,6 +25,7 @@ const Sandbox = () => {
          <div className="mt-6" >
                <FormField
                text={"Ciao sono riutilizzabile"}
+               type={"password"}
                />
          </div>
       
