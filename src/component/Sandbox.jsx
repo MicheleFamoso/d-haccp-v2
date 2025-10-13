@@ -18,7 +18,7 @@ const Sandbox = () => {
         </h1>
         <Button
         variant="secondary"
-        text={"Prova"}
+        text={"      Prova"}
         ></Button>
       </div>
       <div className="m-auto">
