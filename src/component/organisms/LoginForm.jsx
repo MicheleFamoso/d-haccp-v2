@@ -1,8 +1,57 @@
 import Button from "../atoms/Button";
 import FormField from "../molecules/FormField";
 import ThemeToggle from "../molecules/ThemeToggle";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const LoginForm = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:8080/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: userName,
+        password: password,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Username e/o password non corretta ");
+        }
+        return response.text();
+      })
+      .then((token) => {
+        console.log("Token ricevuto:", token);
+        localStorage.setItem("token", token);
+        try {
+          const decoded = jwtDecode(token);
+          localStorage.setItem("ruolo", decoded.role);
+          console.log("Ruolo salvato:", decoded.role);
+        } catch (err) {
+          console.error("Errore nella decodifica del token:", err);
+        }
+        setError("");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Errore:", error.message);
+        setError(error.message);
+        setTimeout(() => {
+          setError("");
+        }, 5000);
+      });
+  };
+
   return (
     <div className=" flex flex-col w-10/12  3xl:w-8/12 mx-auto ">
       <div className=" bg-section-light/50 dark:bg-section-dark/70 backdrop-blur-xs p-5 rounded-3xl my-auto">
@@ -20,13 +69,29 @@ const LoginForm = () => {
             </p>
           </div>
 
-          <form className="flex flex-col " action="">
-            <FormField id={"username"} text={"Username"} />
-            <FormField id={"password"} type={"password"} text={"Password"} />
-            <Button className="mt-6 " variant={"accent"} text={"Accedi"} />
+          <form className="flex flex-col " onSubmit={handleSubmit}>
+            <FormField
+              id={"username"}
+              text={"Username"}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <FormField
+              id={"password"}
+              type={"password"}
+              text={"Password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && (
+              <p className="text-accent-red font-p font-bold text-md text-center animate-fade-in ">
+                {error}
+              </p>
+            )}
+            <Button className="mt-6 " variant={"accent"} text={"Accedi"} />{" "}
           </form>
           <p className="text-center font-p mt-8  text-text-primary-light dark:text-text-primary-dark ">
-            Non hai un account?{" "}
+            Non hai un account?
             <span className="text-accent-blue-dark font-bold"> Registrati</span>
           </p>
         </div>
