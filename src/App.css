@@ -1,30 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 @import "tailwindcss";
-
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme{
---color-bg-light:#f2f2f6;
---color-bg-dark:#000000;
---color-section-light:#fdfdfd;
---color-section-dark:#1c1c1e;
---color-bg-list-light:#f2f1f5;
---color-bg-list-dark:#1c1c1e;
---color-text-secondary-light:#7e7e7e;
---color-text-secondary-dark:#8e8e8f;
---color-text-tertiary-light:#8a898d;
---color-icon-gray-light:#8a898d;
---color-icon-gray-dark:#464649;
---color-btn-light:#ececec;
---color-btn-dark:#2b2c2d;
---color-accent-red:#de4742;
---font-p: "Source Code Pro",sans-serif;
---font-h:"Nunito",sans-serif;
---color-accent-blue-light: #A8E6CF ;
---color-accent-blue-medium:#2BBBAD ;
---color-accent-blue-dark:#00796B ;
---breakpoint-3xl: 120rem;
+@theme {
+  --color-bg-light: #f2f2f6;
+  --color-bg-dark: #000000;
+  --color-section-light: #fdfdfd;
+  --color-section-dark: #1c1c1e;
+  --color-bg-list-light: #f2f1f5;
+  --color-bg-list-dark: #1c1c1e;
+  --color-text-secondary-light: #6e6e6e;
+  --color-text-secondary-dark: #a9a9a9;
+  --color-text-tertiary-light: #8a898d;
+  --color-icon-gray-light: #8a898d;
+  --color-icon-gray-dark: #464649;
+  --color-btn-light: #ececec;
+  --color-btn-dark: #2b2c2d;
+  --color-accent-red: #de4742;
+  --font-p: "Source Code Pro", sans-serif;
+  --font-h: "Nunito", sans-serif;
+  --color-accent-blue-light: #60a5fa;
+  --color-accent-blue-medium: #3b82f6;
+  --color-accent-blue-dark: #1d4ed8;
+  --breakpoint-3xl: 120rem;
+  --color-text-primary-dark: #eaeaea;
+  --color-text-primary-light: #1a1a1a;
 }
 
+@layer utilities {
+  .bg-hero {
+    background-image: url("/public/bg.png");
+  }
+}
