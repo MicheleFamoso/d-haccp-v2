@@ -23,10 +23,10 @@ const LoginForm = () => {
           <form className="flex flex-col " action="">
             <FormField id={"username"} text={"Username"} />
             <FormField id={"password"} type={"password"} text={"Password"} />
-            <div className="self-end mt-2">
-              <Button variant={"accent"} text={"Accedi"} />
-            </div>
+            <Button className="mt-4" variant={"accent"} text={"Accedi"} />
+            <div className="self-end mt-2"></div>
           </form>
+          <p className="text-center">Non hai un account? Registrati</p>
         </div>
       </div>
     </div>
