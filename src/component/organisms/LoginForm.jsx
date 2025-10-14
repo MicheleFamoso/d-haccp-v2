@@ -92,7 +92,13 @@ const LoginForm = () => {
           </form>
           <p className="text-center font-p mt-8  text-text-primary-light dark:text-text-primary-dark ">
             Non hai un account?
-            <span className="text-accent-blue-dark font-bold"> Registrati</span>
+            <button
+              className="text-accent-blue-dark  font-bold ml-2 cursor-pointer"
+              onClick={() => navigate("/registration")}
+            >
+              {" "}
+              Registrati
+            </button>
           </p>
         </div>
       </div>
