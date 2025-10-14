@@ -1,26 +1,11 @@
+import HeroSection from "../organisms/HeroSection";
 import LoginForm from "../organisms/LoginForm";
 
 const LoginPage = () => {
   return (
     <div className="flex bg-[url(bg.png)]  bg-cover  h-dvh">
       <div className="hidden xl:flex">
-        <div className="py-20 3xl:py-30 ml-20 flex flex-col justify-between">
-          <div>
-            <h1 className="font-h text-8xl 3xl:text-9xl dark:text-text-primary-light text-text-primary-dark  text-shadow-lg font-bold">
-              d/haccp
-            </h1>
-            <p className="font-p ml-3 3xl:text-3xl text-xl font-black dark:text-text-primary-light text-text-primary-dark text-shadow-lg">
-              digital haccp managament
-            </p>
-          </div>
-
-          <div className="mb-10 3xl:mb-15">
-            <p className="font-h text-6xl 3xl:text-7xl font-medium dark:text-text-primary-light text-text-primary-dark text-shadow-lg">
-              Gestisci la sicurezza alimentare con un{" "}
-              <span className="font-bold">click.</span>
-            </p>
-          </div>
-        </div>
+        <HeroSection />
       </div>
 
       <div className="flex">
