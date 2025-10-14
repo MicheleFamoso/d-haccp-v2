@@ -14,7 +14,7 @@ const LoginForm = () => {
             <h1 className="font-h font-medium xl:hidden text-text-primary-light dark:text-text-primary-dark text-shadow-2xs text-4xl">
               d/haccp
             </h1>
-            <p className="font-p text-md lg:text-lg  mt-2 lg:mt-6 text-shadow-xs text-text-primary-light dark:text-text-primary-dark ">
+            <p className="font-p font-bold text-md lg:text-lg  mt-2 lg:mt-6 text-shadow-xs text-text-primary-light dark:text-text-primary-dark ">
               Bentornato! È bello rivederti: accedi e continua a gestire i tuoi
               controlli HACCP senza pensieri.
             </p>
@@ -24,9 +24,10 @@ const LoginForm = () => {
             <FormField id={"username"} text={"Username"} />
             <FormField id={"password"} type={"password"} text={"Password"} />
             <Button className="mt-4" variant={"accent"} text={"Accedi"} />
-            <div className="self-end mt-2"></div>
           </form>
-          <p className="text-center">Non hai un account? Registrati</p>
+          <p className="text-center mt-6  text-text-primary-light dark:text-text-primary-dark ">
+            Non hai un account? Registrati
+          </p>
         </div>
       </div>
     </div>
