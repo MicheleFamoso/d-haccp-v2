@@ -19,6 +19,9 @@ const RegistrationForm = () => {
 
     if (!userName || !password || !nome || !cognome || !email) {
       setError("Compila tutti i campi");
+      setTimeout(() => {
+        setError("");
+      }, 5000);
       return;
     }
     setError("");
@@ -47,6 +50,9 @@ const RegistrationForm = () => {
       .catch((error) => {
         console.error("Errore:", error.message);
         setError(error.message);
+        setTimeout(() => {
+          setError("");
+        }, 5000);
       });
   };
 
@@ -83,6 +89,7 @@ const RegistrationForm = () => {
             <FormField
               id={"email"}
               text={"email"}
+              type={"email"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
