@@ -2,9 +2,54 @@ import ThemeToggle from "../molecules/ThemeToggle";
 import Button from "../atoms/Button";
 import FormField from "../molecules/FormField";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 const RegistrationForm = () => {
   const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const Handleregister = (e) => {
+    e.preventDefault();
+
+    if (!userName || !password || !nome || !cognome || !email) {
+      setError("Compila tutti i campi");
+      return;
+    }
+    setError("");
+
+    fetch("http://localhost:8080/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: userName,
+        password: password,
+        nome: nome,
+        cognome: cognome,
+        email: email,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Errore nella registrazione");
+        } else {
+          setSuccess("Registrazione avvenuta con successo!");
+          setTimeout(() => navigate("/"), 1000);
+        }
+      })
+      .catch((error) => {
+        console.error("Errore:", error.message);
+        setError(error.message);
+      });
+  };
+
   return (
     <div className=" flex flex-col w-10/12  3xl:w-8/12 mx-auto ">
       <div className=" bg-section-light/50 dark:bg-section-dark/70 backdrop-blur-xs p-5 rounded-3xl my-auto">
@@ -22,15 +67,50 @@ const RegistrationForm = () => {
             </p>
           </div>
 
-          <form className="flex flex-col ">
-            <FormField id={"username"} text={"Username"} />
-            <FormField id={"password"} type={"password"} text={"Password"} />
-            <Button
-              className="mt-6 "
-              variant={"accent"}
-              text={"Registrati"}
-            />{" "}
+          <form className="flex flex-col " onSubmit={Handleregister}>
+            <FormField
+              id={"nome"}
+              text={"nome"}
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
+            <FormField
+              id={"cognome"}
+              text={"cognome"}
+              value={cognome}
+              onChange={(e) => setCognome(e.target.value)}
+            />
+            <FormField
+              id={"email"}
+              text={"email"}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <FormField
+              id={"username"}
+              text={"Username"}
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <FormField
+              id={"password"}
+              type={"password"}
+              text={"Password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button className="mt-6 " variant={"accent"} text={"Registrati"} />{" "}
           </form>
+          {success && (
+            <p className="text-accent-blue-dark font-p font-bold text-md text-center animate-fade-in">
+              {success}
+            </p>
+          )}
+          {error && (
+            <p className="text-accent-red font-p font-bold text-md text-center animate-fade-in ">
+              {error}
+            </p>
+          )}
           <p className="text-center font-p mt-8  text-text-primary-light dark:text-text-primary-dark ">
             Hai un account?
             <button
