@@ -37,11 +37,11 @@ const Sidebar = () => {
         >
           {isExpanded ? (
             <div className="flex items-center  ">
-              <Bars3BottomLeftIcon className="lg:h-10 lg:w-10 w-12 h-12 hover:bg-btn-light rounded-3xl p-2 cursor-pointer" />{" "}
+              <Bars3BottomLeftIcon className="lg:size-10 size-12 hover:bg-btn-light rounded-3xl p-2 cursor-pointer" />{" "}
               <h1 className="text-2xl ml-3 font-p  text-shadow-xs">d/Haccp</h1>
             </div>
           ) : (
-            <Bars3BottomRightIcon className="lg:h-10 lg:w-10 w-12 h-12 hover:bg-btn-light rounded-3xl p-2 " />
+            <Bars3BottomRightIcon className="lg:size-10 size-12 hover:bg-btn-light rounded-3xl p-2 " />
           )}
         </button>
 
