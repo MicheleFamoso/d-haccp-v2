@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div className="bg-section-light p-5 rounded-3xl shadow-lg dark:bg-section-dark">
+    <div className="bg-section-light  w-8/12 p-5 rounded-3xl shadow-lg dark:bg-section-dark">
       <h1 className="font-p">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam rem
         molestias consectetur voluptate harum architecto dolor ipsa officia

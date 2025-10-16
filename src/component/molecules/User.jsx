@@ -7,6 +7,58 @@ const User = () => {
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
   const popoverRef = useRef(null);
+  const [utenti, setUtenti] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setpassword] = useState("");
+
+  const [idUtente, setIdUtente] = useState(null);
+
+  const getProfilo = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.warn("Nessun token trovato, fetch annullata.");
+      setError("Nessun token trovato, impossibile caricare il profilo.");
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    fetch("http://localhost:8080/admin/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Errore nella risposta: ${res.statusText}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setUtenti([data]);
+        setIdUtente(data.id);
+        setNome(data.nome);
+        setCognome(data.cognome);
+        setUsername(data.username);
+        setEmail(data.email);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log("Errore nella fetch profilo:", error);
+        setError("Errore nel caricamento del profilo.");
+        setLoading(false);
+      });
+  };
+  useEffect(() => {
+    getProfilo();
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popoverRef.current && !popoverRef.current.contains(event.target)) {
@@ -29,11 +81,11 @@ const User = () => {
     >
       <Button
         onClick={() => setClicked(!clicked)}
-        text={<UserIcon className="size-6 " />}
+        text={<UserIcon className="size-5 " />}
       />
 
       <div
-        className={`absolute  mt-2 w-64 bg-section-light dark:bg-section-dark shadow-lg rounded-xl p-4 z-50 transform transition-all duration-300
+        className={`absolute -left-15 mt-2 w-64 bg-section-light dark:bg-section-dark shadow-sm rounded-3xl p-4 z-50 transform transition-all duration-300
           ${
             open
               ? "opacity-100 translate-y-0"
@@ -41,12 +93,20 @@ const User = () => {
           }`}
       >
         <div className="flex flex-col gap-2">
-          <span className="font-semibold text-gray-800 dark:text-gray-100">
-            Michele
-          </span>
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            michele@com
-          </span>
+          {utenti.map((utente) => (
+            <div key={utente.id} className="">
+              <h3 className="text-text-primary-light font-medium dark:text-text-primary-dark text-xl font-h">
+                Ciao {utente.username}
+              </h3>
+
+              <p className="text-text-secondary-light dark:text-text-secondary-dark  font-p">
+                {utente.email}
+              </p>
+              <div className="mt-2 flex justify-center">
+                <Button text={"modifica"} />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
