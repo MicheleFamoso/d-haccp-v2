@@ -5,6 +5,7 @@ const HeroSection = () => {
         <h1 className="font-h text-8xl 3xl:text-9xl  dark:text-btn-dark/90 text-btn-light/80  text-shadow-lg font-black">
           d/haccp
         </h1>
+
         <p className="font-p ml-3 3xl:text-3xl text-xl font-medium dark:text-btn-dark/90 text-btn-light/80 text-shadow-lg">
           digital haccp managament
         </p>

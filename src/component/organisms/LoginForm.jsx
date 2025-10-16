@@ -60,10 +60,11 @@ const LoginForm = () => {
         </div>
         <div className="mt-2">
           <div className="mb-6 ">
-            <h1 className="font-h font-medium xl:hidden text-text-primary-light dark:text-text-primary-dark text-shadow-2xs text-4xl">
+            <h1 className="font-h font-medium xl:hidden  text-text-secondary-light dark:text-text-secondary-dark text-shadow-2xs text-4xl">
               d/haccp
             </h1>
-            <p className="font-p  text-md lg:text-lg  mt-2 lg:mt-6 text-shadow-xs text-text-primary-light dark:text-text-primary-dark ">
+
+            <p className="font-p  text-md lg:text-lg  mt-2 lg:mt-6 text-shadow-xs text-text-secondary-light dark:text-text-secondary-dark ">
               Bentornato! È bello rivederti: accedi e continua a gestire i tuoi
               controlli HACCP senza pensieri.
             </p>
@@ -90,7 +91,7 @@ const LoginForm = () => {
             )}
             <Button className="mt-6 " variant={"accent"} text={"Accedi"} />{" "}
           </form>
-          <p className="text-center font-p mt-8  text-text-primary-light dark:text-text-primary-dark ">
+          <p className="text-center font-p mt-8   text-text-secondary-light dark:text-text-secondary-dark ">
             Non hai un account?
             <button
               className="text-accent-blue-dark  font-bold ml-2 cursor-pointer"
