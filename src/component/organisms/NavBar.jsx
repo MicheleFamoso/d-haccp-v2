@@ -3,7 +3,7 @@ import User from "../molecules/User";
 
 const NavBar = () => {
   return (
-    <div className="flex  pt-2 justify-end-safe">
+    <div className="flex w-11/12 pt-2 justify-end items-center gap-2">
       <User />
       <ThemeToggle />
     </div>
