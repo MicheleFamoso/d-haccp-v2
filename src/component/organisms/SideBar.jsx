@@ -164,7 +164,7 @@ const Sidebar = () => {
         {ruolo === "ADMIN" && (
           <div
             onClick={() => navigate("/utenti")}
-            className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+            className={`flex font-p items-center gap-3 p-2 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
               location.pathname === "/utenti" &&
               "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
             }`}

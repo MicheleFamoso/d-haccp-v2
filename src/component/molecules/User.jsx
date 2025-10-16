@@ -1,9 +1,9 @@
-import ThemeToggle from "./molecules/ThemeToggle";
 import { useState } from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef } from "react";
+import Button from "../atoms/Button";
 
-const Sandbox = () => {
+const User = () => {
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
   const popoverRef = useRef(null);
@@ -21,19 +21,17 @@ const Sandbox = () => {
   const open = hovered || clicked;
 
   return (
-    <div className="mt-6 ml-18 bg-bg-light h-dvh">
+    <div className="">
       <div
         className="relative"
         ref={popoverRef}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <button
+        <Button
           onClick={() => setClicked(!clicked)}
-          className="p-2 rounded-full hover:bg-btn-light  dark:hover:bg-gray-700 transition"
-        >
-          <UserIcon className="size-6 text-btn-dark dark:text-btn-light" />
-        </button>
+          text={<UserIcon className="size-6 " />}
+        />
 
         <div
           className={`absolute  mt-2 w-64 bg-section-light dark:bg-section-dark shadow-lg rounded-xl p-4 z-50 transform transition-all duration-300
@@ -56,5 +54,4 @@ const Sandbox = () => {
     </div>
   );
 };
-
-export default Sandbox;
+export default User;
