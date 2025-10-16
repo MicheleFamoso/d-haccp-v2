@@ -41,7 +41,7 @@ const LoginForm = () => {
           console.error("Errore nella decodifica del token:", err);
         }
         setError("");
-        navigate("/");
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.error("Errore:", error.message);
