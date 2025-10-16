@@ -48,20 +48,15 @@ const Sidebar = () => {
         <div
           onClick={() => navigate("/dashboard")}
           className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/dashboard"
-              ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-              : ""
+            location.pathname === "/dashboard" &&
+            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
-          <HomeIcon
-            className={`h-6 w-6   backdrop-blur-sm  ${
-              location.pathname === "/dashboard" ? "" : ""
-            }`}
-          />
+          <HomeIcon className="size-6" />
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg ${
-                location.pathname === "/dashboard" ? " font-medium" : ""
+                location.pathname === "/dashboard" && " font-medium"
               }`}
             >
               Dashboard
@@ -71,21 +66,16 @@ const Sidebar = () => {
 
         <div
           onClick={() => navigate("/temperatura")}
-          className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/temperatura"
-              ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-              : ""
+          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+            location.pathname === "/temperatura" &&
+            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
-          <ClipboardDocumentListIcon
-            className={`h-6 w-6 backdrop-blur-sm ${
-              location.pathname === "/temperatura" ? "" : ""
-            }`}
-          />
+          <ClipboardDocumentListIcon className="size-6" />
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg  ${
-                location.pathname === "/temperatura" ? " font-medium" : ""
+                location.pathname === "/temperatura" && " font-medium"
               }`}
             >
               Controllo Temperatura
@@ -94,21 +84,16 @@ const Sidebar = () => {
         </div>
         <div
           onClick={() => navigate("/pulizie")}
-          className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/pulizie"
-              ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-              : ""
+          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+            location.pathname === "/pulizie" &&
+            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
-          <SparklesIcon
-            className={`h-6 w-6   backdrop-blur-sm  ${
-              location.pathname === "/pulizie" ? "" : ""
-            }`}
-          />
+          <SparklesIcon className="size-6" />
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg   ${
-                location.pathname === "/pulizie" ? " font-medium" : ""
+                location.pathname === "/pulizie" && " font-medium"
               }`}
             >
               Pianificazione Pulizie
@@ -118,20 +103,15 @@ const Sidebar = () => {
         <div
           onClick={() => navigate("/infestanti")}
           className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/infestanti"
-              ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-              : ""
+            location.pathname === "/infestanti" &&
+            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
-          <BugAntIcon
-            className={`h-6 w-6  backdrop-blur-sm   ${
-              location.pathname === "/infestanti" ? "" : ""
-            }`}
-          />
+          <BugAntIcon className="size-6" />
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg  ${
-                location.pathname === "/infestanti" ? " font-medium" : ""
+                location.pathname === "/infestanti" && " font-medium"
               }`}
             >
               Controllo Infestanti
@@ -141,7 +121,7 @@ const Sidebar = () => {
 
         <div
           onClick={() => navigate("/fornitori")}
-          className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
             location.pathname === "/fornitori"
               ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
               : ""
@@ -165,20 +145,15 @@ const Sidebar = () => {
         <div
           onClick={() => navigate("/forniture")}
           className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/forniture"
-              ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-              : ""
+            location.pathname === "/forniture" &&
+            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
-          <ArchiveBoxIcon
-            className={`h-6 w-6    backdrop-blur-sm  ${
-              location.pathname === "/forniture" ? "" : ""
-            }`}
-          />
+          <ArchiveBoxIcon className="size-6" />
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg  ${
-                location.pathname === "/forniture" ? "font-medium" : ""
+                location.pathname === "/forniture" && "font-medium"
               }`}
             >
               Forniture
@@ -190,20 +165,15 @@ const Sidebar = () => {
           <div
             onClick={() => navigate("/utenti")}
             className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-              location.pathname === "/utenti"
-                ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-                : ""
+              location.pathname === "/utenti" &&
+              "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
             }`}
           >
-            <UsersIcon
-              className={`h-6 w-6   backdrop-blur-sm   ${
-                location.pathname === "/utenti" ? " " : ""
-              }`}
-            />
+            <UsersIcon className="size-6" />
             {isExpanded && (
               <span
                 className={`lg:text-sm text-lg  ${
-                  location.pathname === "/utenti" ? "font-medium" : ""
+                  location.pathname === "/utenti" && "font-medium"
                 }`}
               >
                 Dipendenti
@@ -214,48 +184,38 @@ const Sidebar = () => {
         <div
           onClick={() => navigate("/azienda")}
           className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/azienda"
-              ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-              : ""
+            location.pathname === "/azienda" &&
+            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
-          <BuildingStorefrontIcon
-            className={`h-6 w-6   backdrop-blur-sm  ${
-              location.pathname === "/azienda" ? "" : ""
-            }`}
-          />
+          <BuildingStorefrontIcon className="size-6" />
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg   ${
-                location.pathname === "/azienda" ? "font-medium" : ""
+                location.pathname === "/azienda" && "font-medium"
               }`}
             >
               Azienda
             </span>
           )}
         </div>
-        <hr className="my-3 border-t border-salviaScuro" />
+
         <div
           onClick={() => {
             navigate("/");
             localStorage.removeItem("token");
             localStorage.removeItem("ruolo");
           }}
-          className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/"
-              ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-              : ""
+          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+            location.pathname === "/" &&
+            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
-          <XCircleIcon
-            className={`h-6 w-6    backdrop-blur-sm   ${
-              location.pathname === "/" ? "" : ""
-            }`}
-          />
+          <XCircleIcon className="size-6" />
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg  ${
-                location.pathname === "/" ? " font-medium" : ""
+                location.pathname === "/" && " font-medium"
               }`}
             >
               Log Out
