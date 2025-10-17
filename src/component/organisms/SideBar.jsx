@@ -12,8 +12,6 @@ import {
   TruckIcon,
   ArchiveBoxIcon,
   UsersIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
   Bars3BottomLeftIcon,
   Bars3BottomRightIcon,
 } from "@heroicons/react/24/outline";
@@ -183,7 +181,7 @@ const Sidebar = () => {
         )}
         <div
           onClick={() => navigate("/azienda")}
-          className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
             location.pathname === "/azienda" &&
             "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
@@ -196,29 +194,6 @@ const Sidebar = () => {
               }`}
             >
               Azienda
-            </span>
-          )}
-        </div>
-
-        <div
-          onClick={() => {
-            navigate("/");
-            localStorage.removeItem("token");
-            localStorage.removeItem("ruolo");
-          }}
-          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/" &&
-            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-          }`}
-        >
-          <XCircleIcon className="size-6" />
-          {isExpanded && (
-            <span
-              className={`lg:text-sm text-lg  ${
-                location.pathname === "/" && " font-medium"
-              }`}
-            >
-              Log Out
             </span>
           )}
         </div>

@@ -22,7 +22,7 @@ const ThemeToggle = () => {
         text={theme === "light" ? <SunIcon className="size-7"/> : <MoonIcon className="size-7"/>}
       ></Button> */}
 
-      <div className=" flex gap-1  rounded-3xl p-0.5 bg-icon-gray-light/30 shadow-md">
+      <div className=" flex gap-1 w-fit rounded-3xl p-0.5 bg-icon-gray-light/30 shadow-md">
         <button
           className={`dark:text-text-secondary-dark  text-text-secondary-light py-1 md:px-4 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light dark:hover:bg-icon-gray-dark   ${
             theme === "light"
