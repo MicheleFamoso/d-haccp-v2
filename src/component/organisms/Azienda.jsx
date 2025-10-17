@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { useState, useEffect } from "react";
 import Button from "../atoms/Button";
 import FormField from "../molecules/FormField";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 const Azienda = () => {
   const [azienda, setAzienda] = useState(null);
@@ -226,6 +227,32 @@ const Azienda = () => {
               <Button text={"Salva"} type="submit" variant="accentText" />
             </div>
           </form>
+        </div>
+      )}
+      {!loading && !error && !showForm && azienda && (
+        <div className="px-3">
+          <div className="">
+            <div className="mb-3">
+              <h1 className="font-h text-3xl font-bold text-text-primary-light dark:text-text-primary-dark">
+                {azienda.denominazioneAziendale}
+              </h1>
+              <h6 className="font-p text-lg font-semibold text-text-tertiary-light dark:text-text-secondary-dark">
+                {azienda.tipologiaAttivita}
+              </h6>
+            </div>
+            <div className="font-p text-text-secondary-light dark:text-text-secondary-dark mb-3">
+              <p>{azienda.sedeOperativa}</p>
+              <p>{azienda.telefono}</p>
+              <p>{azienda.email}</p>
+            </div>
+          </div>{" "}
+          {ruolo === "ADMIN" && (
+            <Button
+              text={"modifica"}
+              onClick={() => setShowForm(true)}
+              className="mt-2 w-full"
+            />
+          )}
         </div>
       )}
     </div>

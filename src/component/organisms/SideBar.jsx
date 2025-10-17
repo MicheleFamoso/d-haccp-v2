@@ -179,24 +179,6 @@ const Sidebar = () => {
             )}
           </div>
         )}
-        <div
-          onClick={() => navigate("/azienda")}
-          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/azienda" &&
-            "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
-          }`}
-        >
-          <BuildingStorefrontIcon className="size-6" />
-          {isExpanded && (
-            <span
-              className={`lg:text-sm text-lg   ${
-                location.pathname === "/azienda" && "font-medium"
-              }`}
-            >
-              Azienda
-            </span>
-          )}
-        </div>
       </div>
     </div>
   );
