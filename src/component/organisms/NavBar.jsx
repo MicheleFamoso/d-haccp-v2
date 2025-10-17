@@ -1,5 +1,5 @@
 import ThemeToggle from "../molecules/ThemeToggle";
-import User from "../molecules/User";
+import User from "./User";
 
 const NavBar = () => {
   return (

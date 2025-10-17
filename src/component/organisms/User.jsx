@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import Button from "../atoms/Button";
-import LogOut from "./LogOut";
-import EditUser from "./EditUser";
+import LogOut from "../molecules/LogOut";
+import EditUser from "../molecules/EditUser";
 
 const User = () => {
   const [hovered, setHovered] = useState(false);
