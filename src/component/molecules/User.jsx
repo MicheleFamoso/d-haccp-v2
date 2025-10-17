@@ -2,6 +2,7 @@ import { useState } from "react";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { useEffect, useRef } from "react";
 import Button from "../atoms/Button";
+import LogOut from "./LogOut";
 
 const User = () => {
   const [hovered, setHovered] = useState(false);
@@ -98,13 +99,12 @@ const User = () => {
               <h3 className="text-text-primary-light font-medium dark:text-text-primary-dark text-xl font-h">
                 Ciao {utente.username}
               </h3>
-
               <p className="text-text-secondary-light dark:text-text-secondary-dark  font-p">
                 {utente.email}
               </p>
-              <div className="mt-2 flex justify-center">
-                <Button text={"modifica"} />
-              </div>
+              <div className="flex gap-3 mt-2">
+                <Button text={"modifica"} variant={"accentText"} /> <LogOut />
+              </div>{" "}
             </div>
           ))}
         </div>
