@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Sandbox from "./component/sandbox";
+import Sandbox from "./component/templates/DashboardLayout"
 import LoginPage from "./component/pages/LoginPage";
 import RegistrationForm from "./component/organisms/RegistrationForm";
 import DashboardLayout from "./component/templates/DashboardLayout";

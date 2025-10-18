@@ -232,8 +232,8 @@ const Azienda = () => {
       {!loading && !error && !showForm && azienda && (
         <div className="px-3">
           <div className="">
-            <div className="mb-3">
-              <h1 className="font-h text-3xl font-bold text-text-primary-light dark:text-text-primary-dark">
+            <div className="mb-3 ">
+              <h1 className="font-h text-4xl font-bold text-text-primary-light dark:text-text-primary-dark">
                 {azienda.denominazioneAziendale}
               </h1>
               <h6 className="font-p text-lg font-semibold text-text-tertiary-light dark:text-text-secondary-dark">
@@ -241,9 +241,20 @@ const Azienda = () => {
               </h6>
             </div>
             <div className="font-p text-text-secondary-light dark:text-text-secondary-dark mb-3">
-              <p>{azienda.sedeOperativa}</p>
-              <p>{azienda.telefono}</p>
-              <p>{azienda.email}</p>
+              <div className="flex justify-between ">
+                <p>Sede</p>
+                <p> {azienda.sedeOperativa}</p>
+              </div>
+              <hr className=" border-1 border-bg-list-light my-1 dark:border-bg-list-dark" />
+              <div className="flex justify-between">
+                <p>Telefono</p>
+                <p>{azienda.telefono}</p>
+              </div>
+              <hr className=" border-1 border-bg-list-light my-1 dark:border-bg-list-dark" />
+              <div className="flex justify-between">
+                <p>Email</p>
+                <p>{azienda.email}</p>
+              </div>
             </div>
           </div>{" "}
           {ruolo === "ADMIN" && (
