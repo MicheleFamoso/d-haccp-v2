@@ -13,7 +13,7 @@ const RangeFrigo = ({ value, onChange }) => {
           type="range"
           min="-30"
           max="20"
-          step="0.5"
+          step="1"
           value={value}
           onChange={onChange}
           className="
@@ -37,7 +37,7 @@ const RangeFrigo = ({ value, onChange }) => {
           onChange={onChange}
           min="-30"
           max="25"
-          step="0.5"
+          step="1"
         />
       </div>
     </div>

@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FormField from "../molecules/FormField";
 import RangeFrigo from "../molecules/RangeFrigo";
+import ConformToggle from "../molecules/ConformToggle";
 
 const AddTemperatura = () => {
   const [controllo, setControllo] = useState({
     data: "",
     frigo: "",
-    conformita: "",
+    conformita: "CONFORME",
     temperatura: "",
   });
 
@@ -54,15 +55,20 @@ const AddTemperatura = () => {
           value={controllo.data}
           onChange={(e) => setControllo({ ...controllo, data: e.target.value })}
         />
-        <FormField
-          text={"Frigo"}
-          type={"number"}
-          value={controllo.frigo}
-          onChange={(e) =>
-            setControllo({ ...controllo, frigo: e.target.value })
-          }
-        />
-        <FormField />
+        <div className="flex">
+          <FormField
+            text={"Frigo"}
+            type={"number"}
+            value={controllo.frigo}
+            onChange={(e) =>
+              setControllo({ ...controllo, frigo: e.target.value })
+            }
+          />
+          <ConformToggle
+            value={controllo.conformita}
+            onChange={(val) => setControllo({ ...controllo, conformita: val })}
+          />
+        </div>
       </form>
     </div>
   );
