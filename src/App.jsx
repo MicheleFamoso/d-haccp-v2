@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Sandbox from "./component/templates/DashboardLayout"
+import Sandbox from "./component/templates/DashboardLayout";
 import LoginPage from "./component/pages/LoginPage";
 import RegistrationForm from "./component/organisms/RegistrationForm";
 import DashboardLayout from "./component/templates/DashboardLayout";
 import Home from "./component/pages/Home";
+import Temperatura from "./component/pages/Temperatura";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/registration" element={<LoginPage />}></Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Home />} />
+          <Route path="temperatura" element={<Temperatura />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -3,11 +3,8 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   HomeIcon,
-  UserIcon,
-  BuildingStorefrontIcon,
   SparklesIcon,
   ClipboardDocumentListIcon,
-  XCircleIcon,
   BugAntIcon,
   TruckIcon,
   ArchiveBoxIcon,
@@ -63,9 +60,9 @@ const Sidebar = () => {
         </div>
 
         <div
-          onClick={() => navigate("/temperatura")}
+          onClick={() => navigate("temperatura")}
           className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/temperatura" &&
+            location.pathname === "/dashboard/temperatura" &&
             "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
