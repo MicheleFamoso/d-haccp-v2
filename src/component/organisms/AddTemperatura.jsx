@@ -41,8 +41,29 @@ const AddTemperatura = () => {
           e.preventDefault();
           handleAddTemperature();
         }}
+        className="px-2"
       >
         {" "}
+        <div className="flex justify-between">
+          <div className="w-6/12">
+            <FormField
+              text={"Frigo"}
+              type={"number"}
+              value={controllo.frigo}
+              onChange={(e) =>
+                setControllo({ ...controllo, frigo: e.target.value })
+              }
+            />
+          </div>
+          <div>
+            <ConformToggle
+              value={controllo.conformita}
+              onChange={(val) =>
+                setControllo({ ...controllo, conformita: val })
+              }
+            />
+          </div>
+        </div>
         <RangeFrigo
           value={controllo.temperatura}
           onChange={(e) =>
@@ -55,20 +76,6 @@ const AddTemperatura = () => {
           value={controllo.data}
           onChange={(e) => setControllo({ ...controllo, data: e.target.value })}
         />
-        <div className="flex">
-          <FormField
-            text={"Frigo"}
-            type={"number"}
-            value={controllo.frigo}
-            onChange={(e) =>
-              setControllo({ ...controllo, frigo: e.target.value })
-            }
-          />
-          <ConformToggle
-            value={controllo.conformita}
-            onChange={(val) => setControllo({ ...controllo, conformita: val })}
-          />
-        </div>
       </form>
     </div>
   );
