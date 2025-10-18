@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import FormField from "../molecules/FormField";
+import RangeFrigo from "../molecules/RangeFrigo";
 
 const AddTemperatura = () => {
   const [controllo, setControllo] = useState({
@@ -31,6 +33,38 @@ const AddTemperatura = () => {
     }
   };
 
-  return <div>ciaos</div>;
+  return (
+    <div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAddTemperature();
+        }}
+      >
+        {" "}
+        <RangeFrigo
+          value={controllo.temperatura}
+          onChange={(e) =>
+            setControllo({ ...controllo, temperatura: e.target.value })
+          }
+        />
+        <FormField
+          text={"Data"}
+          type={"date"}
+          value={controllo.data}
+          onChange={(e) => setControllo({ ...controllo, data: e.target.value })}
+        />
+        <FormField
+          text={"Frigo"}
+          type={"number"}
+          value={controllo.frigo}
+          onChange={(e) =>
+            setControllo({ ...controllo, frigo: e.target.value })
+          }
+        />
+        <FormField />
+      </form>
+    </div>
+  );
 };
 export default AddTemperatura;
