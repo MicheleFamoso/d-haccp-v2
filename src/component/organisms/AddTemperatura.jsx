@@ -2,13 +2,14 @@ import { useState } from "react";
 import FormField from "../molecules/FormField";
 import RangeFrigo from "../molecules/RangeFrigo";
 import ConformToggle from "../molecules/ConformToggle";
+import Button from "../atoms/Button";
 
 const AddTemperatura = () => {
   const [controllo, setControllo] = useState({
     data: "",
     frigo: "",
     conformita: "CONFORME",
-    temperatura: "",
+    temperatura: "0",
   });
 
   const handleAddTemperature = async () => {
@@ -26,9 +27,10 @@ const AddTemperatura = () => {
       setControllo({
         data: "",
         frigo: "",
-        conformita: "",
-        temperatura: "",
+        conformita: "CONFORME",
+        temperatura: "0",
       });
+      console.log(controllo);
     } catch (err) {
       console.log(err);
     }
@@ -76,6 +78,7 @@ const AddTemperatura = () => {
           value={controllo.data}
           onChange={(e) => setControllo({ ...controllo, data: e.target.value })}
         />
+        <Button type={"submit"} text={"aggiungi"} className="w-full" />
       </form>
     </div>
   );
