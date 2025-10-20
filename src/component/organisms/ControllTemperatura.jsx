@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { data } from "react-router-dom";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const ControllTemperatura = () => {
   //const Fetch
@@ -28,7 +29,6 @@ const ControllTemperatura = () => {
   const d = new Date(dataControllo);
   d.setDate(d.getDate() - 1);
   const giornoPrec = d.getDate();
-  const mesePrec = d.toLocaleString("it-IT", { month: "short" });
 
   //Funzione giorno succ
   const giornoSuccessivo = () => {
@@ -39,8 +39,7 @@ const ControllTemperatura = () => {
   //Const per render giorno succ
   const e = new Date(dataControllo);
   e.setDate(e.getDate() + 1);
-  const giornoSucc = d.getDate();
-  const meseSucc = d.toLocaleString("it-IT", { month: "short" });
+  const giornoSucc = e.getDate();
 
   //Fetch get
   const HandleTemp = async () => {
@@ -74,15 +73,38 @@ const ControllTemperatura = () => {
 
   return (
     <div className="h-10/12">
-      <nav>
-        {" "}
-        <button onClick={() => giornoPrecedente()} className="bg-red-50 p-4">
-          {giornoPrec} {mesePrec}
-        </button>
-        <p>{oggi}</p>
+      <nav className="flex items-center justify-center gap-6 ">
+        <div
+          onClick={() => giornoPrecedente()}
+          className="bg-bg-list-light px-4 py-2 rounded-full text-text-primary-light dark:text-text-primary-dark cursor-pointer flex items-center gap-2 font-p dark:bg-icon-gray-dark"
+        >
+          <ChevronLeftIcon className="size-5" />
+          <button className="cursor-pointer"> {giornoPrec}</button>
+        </div>
+
+        <div className="  flex flex-col justify-center justify-items-center items-center font-p font-bold text-text-primary-dark">
+          <p className="bg-red-500  px-3 py-2 rounded-full">{oggi}</p>
+        </div>
+        <div
+          onClick={() => giornoSuccessivo()}
+          className="bg-bg-list-light px-4 py-2 rounded-full cursor-pointer flex items-center gap-2  dark:bg-icon-gray-dark text-text-primary-light dark:text-text-primary-dark"
+        >
+          <button className="cursor-pointer">{giornoSucc}</button>{" "}
+          <ChevronRightIcon className="size-5" />
+        </div>
       </nav>
 
-      <h1>Termperatura</h1>
+      <div className="grid grid-cols-3 gap-5 mt-6">
+        {temperature.map((temp) => (
+          <div key={temp.key} className=" ">
+            <div className="bg-bg-light px-6 py-6 rounded-4xl">
+              <h2>{temp.frigo}</h2>
+              <p>{temp.temperatura}</p>
+              <p>{temp.conformita}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
