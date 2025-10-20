@@ -95,15 +95,17 @@ const ControllTemperatura = () => {
       </nav>
 
       <div className="grid grid-cols-3 gap-5 mt-6">
-        {temperature.map((temp) => (
-          <div key={temp.key} className=" ">
-            <div className="bg-bg-light px-6 py-6 rounded-4xl">
-              <h2>{temp.frigo}</h2>
-              <p>{temp.temperatura}</p>
-              <p>{temp.conformita}</p>
+        {isLoading && <div> Caricamento</div>}
+        {isLoading === false &&
+          temperature.map((temp) => (
+            <div key={temp.key} className=" ">
+              <div className="bg-bg-light px-6 py-6 rounded-4xl">
+                <h2>{temp.frigo}</h2>
+                <p>{temp.temperatura}</p>
+                <p>{temp.conformita}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
