@@ -16,7 +16,7 @@ const ControllTemperatura = () => {
   //Giorno odierno
   const x = new Date(dataControllo);
   const oggi = x.getDate();
-  const mese = x.toLocaleString("it-IT", { month: "short" });
+  const mese = x.toLocaleString("it-IT", { month: "long" });
 
   // Funzione giorno precedente
   const giornoPrecedente = () => {
@@ -76,7 +76,15 @@ const ControllTemperatura = () => {
       <nav className="flex items-center justify-center gap-6 ">
         <div
           onClick={() => giornoPrecedente()}
-          className="bg-bg-list-light px-4 py-2 rounded-full text-text-primary-light dark:text-text-primary-dark cursor-pointer flex items-center gap-2 font-p dark:bg-icon-gray-dark"
+          className="bg-bg-list-light px-4 py-2 rounded-full
+11
+
+NON_CONFORME
+
+6
+5
+
+CONFORME text-text-primary-light dark:text-text-primary-dark cursor-pointer flex items-center gap-2 font-p dark:bg-icon-gray-dark"
         >
           <ChevronLeftIcon className="size-5" />
           <button className="cursor-pointer"> {giornoPrec}</button>
@@ -93,8 +101,11 @@ const ControllTemperatura = () => {
           <ChevronRightIcon className="size-5" />
         </div>
       </nav>
+      <div>
+        <h1 className="text-center text-xl font-p">{mese}</h1>
+      </div>
 
-      <div className="grid grid-cols-3 gap-5 mt-6">
+      <div className="grid grid-cols-3 3xl:grid-cols-4 gap-5 mt-6">
         {isLoading && <div> Caricamento</div>}
         {isLoading === false &&
           temperature.map((temp) => (
