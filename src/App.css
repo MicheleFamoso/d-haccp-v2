@@ -34,3 +34,6 @@
     background-image: url("/public/bg.png");
   }
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

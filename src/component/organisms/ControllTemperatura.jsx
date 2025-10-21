@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { data } from "react-router-dom";
+
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const ControllTemperatura = () => {
@@ -102,17 +102,19 @@ CONFORME text-text-primary-light dark:text-text-primary-dark cursor-pointer flex
         </div>
       </nav>
       <div>
-        <h1 className="text-center text-xl font-p">{mese}</h1>
+        <h1 className="text-center text-xl font-p text-text-secondary-light dark:text-text-secondary-dark">
+          {mese}
+        </h1>
       </div>
 
-      <div className="grid grid-cols-3 3xl:grid-cols-4 gap-5 mt-6">
+      <div className="grid grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
         {isLoading && <div> Caricamento</div>}
         {isLoading === false &&
           temperature.map((temp) => (
-            <div key={temp.key} className=" ">
-              <div className="bg-bg-light px-6 py-6 rounded-4xl">
-                <h2>{temp.frigo}</h2>
-                <p>{temp.temperatura}</p>
+            <div key={temp.key} className=" mb-3">
+              <div className="bg-bg-light font-h dark:bg-btn-dark text-text-secondary-light dark:text-text-secondary-dark md:px-6 md:py-6 px-4 py-4  rounded-4xl">
+                <h2> Frigorifero: {temp.frigo}</h2>
+                <p> Temperatura: {temp.temperatura}</p>
                 <p>{temp.conformita}</p>
               </div>
             </div>
