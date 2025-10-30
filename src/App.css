@@ -27,6 +27,9 @@
   --breakpoint-3xl: 120rem;
   --color-text-primary-dark: #eaeaea;
   --color-text-primary-light: #1a1a1a;
+  --color-alert-1:#AD3F44;
+  --color-alert-2:#d94b4b;
+  --color-alert-3:#c94c4c;
 }
 
 @layer utilities {

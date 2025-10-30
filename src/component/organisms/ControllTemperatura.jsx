@@ -2,6 +2,13 @@ import { useState, useEffect } from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
+import {
+  CheckIcon,
+  ExclamationTriangleIcon,
+  InformationCircleIcon,
+  ClipboardDocumentCheckIcon,
+} from "@heroicons/react/24/outline";
+import { Refrigerator, Thermometer, FileCheck } from "lucide-react";
 
 const ControllTemperatura = () => {
   //const Fetch
@@ -78,13 +85,13 @@ const ControllTemperatura = () => {
 
   return (
     <div className="h-10/12">
-      <nav className="flex items-center justify-center gap-6 ">
+      <nav className="flex items-center justify-center gap-6 select-none">
         <div
           onClick={() => giornoPrecedente()}
           className="bg-bg-list-light px-4 py-2 rounded-full text-text-primary-light dark:text-text-primary-dark cursor-pointer flex items-center gap-2 font-p dark:bg-icon-gray-dark"
         >
           <ChevronLeftIcon className="size-5" />
-          <button className="cursor-pointer"> {giornoPrec}</button>
+          <button className="cursor-pointer "> {giornoPrec}</button>
         </div>
 
         <div className="  flex flex-col justify-center justify-items-center items-center font-p font-bold text-text-primary-dark">
@@ -99,7 +106,7 @@ const ControllTemperatura = () => {
         </div>
       </nav>
       <div>
-        <h1 className="text-center text-xl font-p text-text-secondary-light dark:text-text-secondary-dark">
+        <h1 className="text-center text-xl font-p text-text-secondary-light dark:text-text-secondary-dark select-none">
           {mese}
         </h1>
       </div>
@@ -108,11 +115,43 @@ const ControllTemperatura = () => {
         {isLoading && <div> Caricamento</div>}
         {isLoading === false &&
           temperature.map((temp) => (
-            <div key={temp.key} className=" mb-3">
-              <div className="bg-bg-light font-h dark:bg-btn-dark text-text-secondary-light dark:text-text-secondary-dark md:px-6 md:py-6 px-4 py-4  rounded-4xl">
-                <h2> Frigorifero: {temp.frigo}</h2>
-                <p> Temperatura: {temp.temperatura}</p>
-                <p>{temp.conformita}</p>
+            <div key={temp.key} className=" mb-2">
+              <div
+                className={`font-h ${
+                  temp.conformita !== "CONFORME"
+                    ? " dark:bg-alert-1/90 text-text-primary-dark bg-alert-2 "
+                    : "bg-bg-light  dark:bg-btn-dark text-text-secondary-light dark:text-text-secondary-dark"
+                }   md:px-6 md:py-5 px-4 py-4 shadow-md  rounded-4xl font-bold select-none`}
+              >
+                <div className="flex justify-between mb-4">
+                  <div className="flex gap-1">
+                    <Refrigerator size={18} strokeWidth={1.4} />
+                    <h2>Frigorifero</h2>
+                  </div>
+
+                  <p> {temp.frigo}</p>
+                </div>
+                <div className="flex justify-between mb-4">
+                  <div className="flex gap-1">
+                    <Thermometer size={18} strokeWidth={1.4} />
+
+                    <p> Temperatura </p>
+                  </div>
+
+                  <p>{temp.temperatura}&deg; C </p>
+                </div>
+                <div className="flex justify-between">
+                  <div className="flex gap-1">
+                    <FileCheck size={18} strokeWidth={1.4} />
+                    <p>Conformita</p>
+                  </div>
+
+                  {temp.conformita === "CONFORME" ? (
+                    <CheckIcon className="size-6 text-lime-500 " />
+                  ) : (
+                    <ExclamationTriangleIcon className="size-6 text-red-100 " />
+                  )}
+                </div>
               </div>
             </div>
           ))}
