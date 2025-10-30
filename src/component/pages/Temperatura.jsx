@@ -10,7 +10,7 @@ const Temperatura = () => {
       <div className="bg-section-light px-3  py-5 rounded-3xl shadow-lg dark:bg-section-dark">
         <AddTemperatura />
       </div>
-    </div>
+    </div> 
   );
 };
 export default Temperatura;

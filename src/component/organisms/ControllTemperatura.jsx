@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
 
 const ControllTemperatura = () => {
   //const Fetch
   const [temperature, SetTemperature] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const render = useSelector((state) => {
+    return state.temp.aggiorna;
+  });
 
   //Const data odierna
   const [dataControllo, setdataControllo] = useState(
@@ -69,22 +74,14 @@ const ControllTemperatura = () => {
   //UseEffect con dataControllo cosi da ri-renderizzare ad ogni cambio di data
   useEffect(() => {
     HandleTemp();
-  }, [dataControllo]);
+  }, [dataControllo, render]);
 
   return (
     <div className="h-10/12">
       <nav className="flex items-center justify-center gap-6 ">
         <div
           onClick={() => giornoPrecedente()}
-          className="bg-bg-list-light px-4 py-2 rounded-full
-11
-
-NON_CONFORME
-
-6
-5
-
-CONFORME text-text-primary-light dark:text-text-primary-dark cursor-pointer flex items-center gap-2 font-p dark:bg-icon-gray-dark"
+          className="bg-bg-list-light px-4 py-2 rounded-full text-text-primary-light dark:text-text-primary-dark cursor-pointer flex items-center gap-2 font-p dark:bg-icon-gray-dark"
         >
           <ChevronLeftIcon className="size-5" />
           <button className="cursor-pointer"> {giornoPrec}</button>

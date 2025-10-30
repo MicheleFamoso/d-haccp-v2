@@ -3,8 +3,11 @@ import FormField from "../molecules/FormField";
 import RangeFrigo from "../molecules/RangeFrigo";
 import ConformToggle from "../molecules/ConformToggle";
 import Button from "../atoms/Button";
+import { useDispatch } from "react-redux";
 
 const AddTemperatura = () => {
+  const dispatch = useDispatch();
+
   const [controllo, setControllo] = useState({
     data: "",
     frigo: "",
@@ -29,6 +32,10 @@ const AddTemperatura = () => {
         frigo: "",
         conformita: "CONFORME",
         temperatura: "0",
+      });
+      dispatch({
+        type: "AGGIORNA",
+        payload: Date.now(),
       });
       console.log(controllo);
     } catch (err) {
