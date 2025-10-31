@@ -12,6 +12,7 @@ import {
   FileCheck,
   Check,
   TriangleAlert,
+  Ellipsis,
 } from "lucide-react";
 
 const ControllTemperatura = () => {
@@ -125,9 +126,15 @@ const ControllTemperatura = () => {
                   temp.conformita !== "CONFORME"
                     ? "  bg-red-100 dark:bg-alert-3"
                     : "  bg-bg-light  dark:bg-btn-dark  "
-                }   md:px-5 md:py-4 shadow-md px-4 py-4 rounded-4xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark`}
+                }   md:px-5 md:pt-2 shadow-md px-4 pt-0 pb-4 rounded-4xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark`}
               >
-                <div className="flex justify-between mb-4">
+                <div className="flex justify-end ">
+                  <button className="hover:bg-text-tertiary-light p-1 rounded-full cursor-pointer">
+                    <Ellipsis className="hover:text-white" />
+                  </button>
+                </div>
+
+                <div className="flex justify-between mb-4 mt-3">
                   <div className="flex gap-2 items-center text-text-primary-light font-medium dark:text-text-primary-dark">
                     <Refrigerator
                       size={26}

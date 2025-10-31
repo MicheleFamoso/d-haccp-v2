@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { useState, useEffect } from "react";
 import Button from "../atoms/Button";
 import FormField from "../molecules/FormField";
-import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
+import { MapPin, Phone, Mail, Store } from "lucide-react";
 
 const Azienda = () => {
   const [azienda, setAzienda] = useState(null);
@@ -232,27 +232,42 @@ const Azienda = () => {
       {!loading && !error && !showForm && azienda && (
         <div className="px-3">
           <div className="">
-            <div className="mb-3 ">
-              <h1 className="font-h text-4xl font-bold text-text-primary-light dark:text-text-primary-dark">
-                {azienda.denominazioneAziendale}
-              </h1>
-              <h6 className="font-p text-lg font-semibold text-text-tertiary-light dark:text-text-secondary-dark">
-                {azienda.tipologiaAttivita}
-              </h6>
+            <div className="mb-6 flex gap-3 items-center ">
+              <Store size={60} strokeWidth={1.5} className="text-blue-400" />
+              <div>
+                <h1 className="font-h text-4xl font-bold text-text-primary-light dark:text-text-primary-dark">
+                  {azienda.denominazioneAziendale}
+                </h1>
+                <h6 className="font-p text-lg font-semibold text-text-tertiary-light dark:text-text-secondary-dark">
+                  {azienda.tipologiaAttivita}
+                </h6>
+              </div>
             </div>
             <div className="font-p text-text-secondary-light dark:text-text-secondary-dark mb-3">
-              <div className="flex justify-between ">
-                <p>Sede</p>
+              <div className="flex justify-between mb-3">
+                <div className="flex gap-2 items-center">
+                  <MapPin size={20} strokeWidth={1.5} />
+                  <p>Sede</p>
+                </div>
+
                 <p> {azienda.sedeOperativa}</p>
               </div>
-              <hr className=" border-1 border-bg-list-light my-1 dark:border-bg-list-dark" />
-              <div className="flex justify-between">
-                <p>Telefono</p>
+
+              <div className="flex justify-between mb-3">
+                <div className="flex gap-2 items-center">
+                  <Phone size={20} strokeWidth={1.5} />
+                  <p>Telefono</p>
+                </div>
+
                 <p>{azienda.telefono}</p>
               </div>
-              <hr className=" border-1 border-bg-list-light my-1 dark:border-bg-list-dark" />
+
               <div className="flex justify-between">
-                <p>Email</p>
+                <div className="flex gap-2 items-center">
+                  <Mail size={20} strokeWidth={1.5} />
+                  <p>Email</p>
+                </div>
+
                 <p>{azienda.email}</p>
               </div>
             </div>
@@ -260,7 +275,16 @@ const Azienda = () => {
           {ruolo === "ADMIN" && (
             <Button
               text={"modifica"}
-              onClick={() => setShowForm(true)}
+              onClick={() => {
+                setDenominazioneAziendale(azienda.denominazioneAziendale || "");
+                setRagioneSociale(azienda.ragioneSociale || "");
+                setTipologiaAttivita(azienda.tipologiaAttivita || "");
+                setSedeOperativa(azienda.sedeOperativa || "");
+                setPartitaIva(azienda.partitaIva || "");
+                setTelefono(azienda.telefono || "");
+                setEmail(azienda.email || "");
+                setShowForm(true);
+              }}
               className="mt-2 w-full"
             />
           )}
