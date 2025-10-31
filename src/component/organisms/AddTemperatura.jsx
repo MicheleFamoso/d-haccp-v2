@@ -9,7 +9,7 @@ const AddTemperatura = () => {
   const dispatch = useDispatch();
 
   const [controllo, setControllo] = useState({
-    data: "",
+    data: new Date().toISOString().split("T")[0],
     frigo: "",
     conformita: "CONFORME",
     temperatura: "0",
@@ -28,7 +28,7 @@ const AddTemperatura = () => {
       });
       if (!response.ok) throw new Error("Errore nella fetch!");
       setControllo({
-        data: "",
+        data: new Date().toISOString().split("T")[0],
         frigo: "",
         conformita: "CONFORME",
         temperatura: "0",

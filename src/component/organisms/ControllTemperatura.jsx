@@ -5,16 +5,20 @@ import { useSelector } from "react-redux";
 import {
   CheckIcon,
   ExclamationTriangleIcon,
-  InformationCircleIcon,
-  ClipboardDocumentCheckIcon,
 } from "@heroicons/react/24/outline";
-import { Refrigerator, Thermometer, FileCheck } from "lucide-react";
+import {
+  Refrigerator,
+  Thermometer,
+  FileCheck,
+  Check,
+  TriangleAlert,
+} from "lucide-react";
 
 const ControllTemperatura = () => {
   //const Fetch
   const [temperature, SetTemperature] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
 
   const render = useSelector((state) => {
     return state.temp.aggiorna;
@@ -119,21 +123,29 @@ const ControllTemperatura = () => {
               <div
                 className={`font-h ${
                   temp.conformita !== "CONFORME"
-                    ? " dark:bg-alert-1/90 text-text-primary-dark bg-alert-2 "
-                    : "bg-bg-light  dark:bg-btn-dark text-text-secondary-light dark:text-text-secondary-dark"
-                }   md:px-6 md:py-5 px-4 py-4 shadow-md  rounded-4xl font-bold select-none`}
+                    ? "  bg-red-100 dark:bg-alert-3"
+                    : "  bg-bg-light  dark:bg-btn-dark  "
+                }   md:px-5 md:py-4 shadow-md px-4 py-4 rounded-4xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark`}
               >
                 <div className="flex justify-between mb-4">
-                  <div className="flex gap-1">
-                    <Refrigerator size={18} strokeWidth={1.4} />
-                    <h2>Frigorifero</h2>
+                  <div className="flex gap-2 items-center text-text-primary-light font-medium dark:text-text-primary-dark">
+                    <Refrigerator
+                      size={26}
+                      strokeWidth={2}
+                      className="bg-violet-300 p-1 rounded-md text-white"
+                    />
+                    <h2 className="">Frigorifero</h2>
                   </div>
 
                   <p> {temp.frigo}</p>
                 </div>
                 <div className="flex justify-between mb-4">
-                  <div className="flex gap-1">
-                    <Thermometer size={18} strokeWidth={1.4} />
+                  <div className="flex gap-2 items-center text-text-primary-light font-medium dark:text-text-primary-dark">
+                    <Thermometer
+                      size={26}
+                      strokeWidth={2}
+                      className="bg-blue-300 p-1 rounded-md text-white"
+                    />
 
                     <p> Temperatura </p>
                   </div>
@@ -141,15 +153,27 @@ const ControllTemperatura = () => {
                   <p>{temp.temperatura}&deg; C </p>
                 </div>
                 <div className="flex justify-between">
-                  <div className="flex gap-1">
-                    <FileCheck size={18} strokeWidth={1.4} />
+                  <div className="flex gap-2 items-center text-text-primary-light font-medium dark:text-text-primary-dark">
+                    <FileCheck
+                      size={26}
+                      strokeWidth={2}
+                      className="bg-yellow-400 p-1 rounded-md text-white"
+                    />
                     <p>Conformita</p>
                   </div>
 
                   {temp.conformita === "CONFORME" ? (
-                    <CheckIcon className="size-6 text-lime-500 " />
+                    <Check
+                      size={26}
+                      strokeWidth={4}
+                      className="text-green-600"
+                    />
                   ) : (
-                    <ExclamationTriangleIcon className="size-6 text-red-100 " />
+                    <TriangleAlert
+                      size={26}
+                      strokeWidth={2}
+                      className="text-red-700 dark:text-red-100"
+                    />
                   )}
                 </div>
               </div>
