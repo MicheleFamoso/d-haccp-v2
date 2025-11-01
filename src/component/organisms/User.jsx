@@ -3,6 +3,7 @@ import { UserIcon } from "@heroicons/react/24/outline";
 import Button from "../atoms/Button";
 import LogOut from "../molecules/LogOut";
 import EditUser from "../molecules/EditUser";
+import { CircleUser, Mail, SquareUser } from "lucide-react";
 
 const User = () => {
   const [hovered, setHovered] = useState(false);
@@ -85,7 +86,7 @@ const User = () => {
       />
 
       <div
-        className={`absolute -left-15 mt-2 w-64 bg-section-light dark:bg-section-dark shadow-sm rounded-3xl p-4 z-50 transform transition-all duration-300 ${
+        className={`absolute -left-15 mt-2 w-70 bg-section-light/50 backdrop-blur-md dark:bg-section-dark/80 shadow-xl border-1 border-white dark:border-black rounded-3xl px-4 z-50 transform transition-all duration-300 ${
           open
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-2 pointer-events-none"
@@ -94,13 +95,26 @@ const User = () => {
         <div className="flex flex-col gap-2">
           {utenti.map((utente) => (
             <div key={utente.id}>
-              <h3 className="text-text-primary-light font-medium dark:text-text-primary-dark text-xl font-h">
-                Ciao {utente.username}
-              </h3>
-              <p className="text-text-secondary-light dark:text-text-secondary-dark font-p">
-                {utente.email}
-              </p>
-              <div className="flex gap-3 mt-2">
+              <div className="flex  gap-3 mt-8 mb-6 items-center">
+                <CircleUser
+                  size={45}
+                  strokeWidth={1}
+                  className="bg-accent-blue-medium rounded-full text-white"
+                />
+                <h3 className="text-text-primary-light font-medium dark:text-text-primary-dark text-3xl font-h">
+                  Ciao {utente.nome}
+                </h3>
+              </div>
+
+              <div className="flex items-center gap-3 text-text-secondary-light dark:text-text-secondary-dark ">
+                <SquareUser size={18} />
+                <p className=" font-p truncate">{utente.username}</p>
+              </div>
+              <div className="flex items-center gap-3 text-text-secondary-light dark:text-text-secondary-dark">
+                <Mail size={18} />
+                <p className="font-p truncate">{utente.email}</p>
+              </div>
+              <div className="flex gap-3 justify-end mt-12 mb-4 ">
                 <Button
                   text="Modifica"
                   variant="accentText"
