@@ -2,6 +2,7 @@ import { useState } from "react";
 import FormField from "../molecules/FormField";
 import Button from "../atoms/Button";
 import FormLabel from "../molecules/FormLabel";
+import { useDispatch } from "react-redux";
 const AddPulizia = () => {
   const [pulizia, setPulizia] = useState({
     oggetto: "",
@@ -9,7 +10,7 @@ const AddPulizia = () => {
     attrezzatureUtilizzate: "",
     frequenza: "",
   });
-
+  const dispatch = useDispatch();
   const handleAddPulizia = async () => {
     const token = localStorage.getItem("token");
     try {
@@ -27,6 +28,10 @@ const AddPulizia = () => {
         detergente: "",
         attrezzatureUtilizzate: "",
         frequenza: "",
+      });
+      dispatch({
+        type: "RIAGGIORNA",
+        payload: Date.now(),
       });
     } catch (err) {
       console.log(err);
