@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormField from "../molecules/FormField";
 import Button from "../atoms/Button";
 import FormLabel from "../molecules/FormLabel";
@@ -68,7 +68,7 @@ const AddPulizia = () => {
           }
         />
         <FormLabel
-          text={"Frequenza panificazione"}
+          text={"Frequenza sanificazione"}
           onChange={(e) =>
             setPulizia({
               ...pulizia,
