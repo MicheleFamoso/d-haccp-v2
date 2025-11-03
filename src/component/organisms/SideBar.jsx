@@ -20,7 +20,7 @@ const Sidebar = () => {
   const token = localStorage.getItem("token");
   const ruolo = token ? jwtDecode(token).role : null;
   return (
-    <div>
+    <div className="mt-4">
       <div
         className={`ml-4   hidden md:flex bg-section-light dark:bg-section-dark dark:text-text-secondary-dark text-text-secondary-light rounded-4xl ${
           isExpanded ? "w-60" : "w-16 "
@@ -28,7 +28,7 @@ const Sidebar = () => {
       >
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mb-10    self-baseline"
+          className="mb-5    self-baseline"
         >
           {isExpanded ? (
             <div className="flex items-center  ">

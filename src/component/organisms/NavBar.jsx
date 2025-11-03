@@ -3,9 +3,11 @@ import User from "./User";
 
 const NavBar = () => {
   return (
-    <div className="flex w-11/12 pt-2 justify-end items-center gap-2">
-      <User />
-      <ThemeToggle />
+    <div className="flex p-2 justify-self-center gap-2">
+      <div className="flex items-center   gap-2 bg-section-light shadow-xs p-2 rounded-4xl dark:bg-section-dark ">
+        <User />
+        <ThemeToggle />
+      </div>
     </div>
   );
 };

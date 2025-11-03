@@ -55,14 +55,17 @@ const EditUser = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/15 backdrop-blur-xs bg-opacity-40 flex justify-end z-50">
+    <div className="fixed inset-0 bg-black/15 backdrop-blur-xs bg-opacity-40 flex justify-center z-50">
       <form
-        className="flex flex-col bg-section-light dark:bg-section-dark py-8 px-4 rounded-4xl mr-20 w-fit mt-15 absolute"
+        className="flex flex-col bg-section-light dark:bg-section-dark pb-8 pt-3 px-5 rounded-4xl mr-20 w-fit mt-15 absolute"
         onSubmit={(e) => {
           e.preventDefault();
           modificaUtente();
         }}
       >
+        <h2 className="font-h text-center text-2xl text-text-primary-light dark:text-text-primary-dark">
+          Modifica profilo
+        </h2>
         <FormField
           value={nome}
           onChange={(e) => setNome(e.target.value)}

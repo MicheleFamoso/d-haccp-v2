@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
-
+import { Thermometer } from "lucide-react";
 import CardTemp from "./CardTemp";
 
 const ControllTemperatura = () => {
@@ -97,6 +97,10 @@ const ControllTemperatura = () => {
 
   return (
     <div className="h-10/12">
+      <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
+        Controllo temperature
+      </h1>
+
       <nav className="flex items-center justify-center gap-6 select-none">
         <div
           onClick={() => giornoPrecedente()}
@@ -107,7 +111,9 @@ const ControllTemperatura = () => {
         </div>
 
         <div className="  flex flex-col justify-center justify-items-center items-center font-p font-bold text-text-primary-dark">
-          <p className="bg-red-500  px-3 py-2 rounded-full">{oggi}</p>
+          <p className="bg-red-500 w-10 h-10 flex items-center justify-center text-center rounded-full">
+            {oggi}
+          </p>
         </div>
         <div
           onClick={() => giornoSuccessivo()}

@@ -80,10 +80,12 @@ const User = () => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <Button
+      <button
         onClick={() => setClicked(!clicked)}
-        text={<UserIcon className="size-5" />}
-      />
+        className="hover:bg-accent-blue-light p-2 rounded-4xl bg-blue-300 shadow-xs cursor-pointer "
+      >
+        <UserIcon className="size-5 text-text-primary-light  " />
+      </button>
 
       <div
         className={`absolute -left-15 mt-2 w-70 bg-section-light/50 backdrop-blur-md dark:bg-section-dark/80 shadow-xl border-1 border-white dark:border-black rounded-3xl px-4 z-50 transform transition-all duration-300 ${

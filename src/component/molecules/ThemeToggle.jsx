@@ -22,20 +22,22 @@ const ThemeToggle = () => {
         text={theme === "light" ? <SunIcon className="size-7"/> : <MoonIcon className="size-7"/>}
       ></Button> */}
 
-      <div className=" flex gap-1 w-fit rounded-3xl p-0.5 bg-icon-gray-light/30 shadow-md">
+      <div className=" flex gap-1 w-fit rounded-3xl p-0.5 bg-icon-gray-light/40 ">
         <button
-          className={`dark:text-text-secondary-dark  text-text-secondary-light py-1 md:px-4 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light dark:hover:bg-icon-gray-dark   ${
+          className={` py-1 md:px-4 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light dark:hover:bg-bg-light   ${
             theme === "light"
-              ? " bg-btn-light  dark:bg-btn-dark shadow-xl "
-              : ""
+              ? " bg-bg-light  dark:bg-btn-dark shadow-xl dark:text-text-secondary-dark  text-text-secondary-light"
+              : "dark:text-text-secondary-dark hover:text-text-primary-light"
           } `}
           onClick={() => setTheme("light")}
         >
           <SunIcon className="size-5 " />
         </button>
         <button
-          className={` dark:text-text-secondary-dark  text-text-secondary-light py-1 md:px-4 px-3 rounded-4xl  cursor-pointer hover:bg-bg-list-light hover:shadow-2xl dark:hover:bg-icon-gray-dark   ${
-            theme === "dark" ? " bg-btn-light dark:bg-bg-list-dark " : ""
+          className={`  py-1 md:px-4 px-3 rounded-4xl  cursor-pointer hover:bg-bg-dark hover:shadow-2xl dark:hover:bg-bg-dark  ${
+            theme === "dark"
+              ? " bg-btn-light dark:bg-bg-list-dark dark:text-text-secondary-dark  text-text-secondary-light"
+              : " text-text-tertiary-light hover:text-text-primary-dark"
           } `}
           onClick={() => setTheme("dark")}
         >

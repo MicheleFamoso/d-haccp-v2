@@ -45,6 +45,10 @@ const AddTemperatura = () => {
 
   return (
     <div>
+      <h1 className="font-h text-xl font-bold text-text-secondary-light dark:text-text-primary-dark text-center text-shadow-xs mb-4">
+        Aggiungi temperatura
+      </h1>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
