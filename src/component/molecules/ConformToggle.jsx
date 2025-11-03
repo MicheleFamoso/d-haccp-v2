@@ -1,10 +1,10 @@
 import { XMarkIcon, CheckIcon } from "@heroicons/react/24/outline";
 
-const ConformToggle = ({ value = "CONFORME", onChange }) => {
+const ConformToggle = ({ value = "CONFORME", onChange, label }) => {
   return (
     <div>
       <label className="dark:text-text-secondary-dark text-text-secondary-light font-h text-md ">
-        Conformita
+        {label}
       </label>
       <div
         className={`flex gap-1 w-full rounded-3xl p-0.5  shadow-md ${

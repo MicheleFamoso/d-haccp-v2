@@ -71,6 +71,7 @@ const AddTemperatura = () => {
           <div>
             <ConformToggle
               value={controllo.conformita}
+              label={"Conformita"}
               onChange={(val) =>
                 setControllo({ ...controllo, conformita: val })
               }

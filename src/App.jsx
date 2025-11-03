@@ -7,6 +7,7 @@ import DashboardLayout from "./component/templates/DashboardLayout";
 import Home from "./component/pages/Home";
 import Temperatura from "./component/pages/Temperatura";
 import Pulizia from "./component/pages/Pulizia";
+import Infestanti from "./component/pages/Infestanti";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="temperatura" element={<Temperatura />}></Route>
           <Route path="pulizie" element={<Pulizia />}></Route>
+          <Route path="infestanti" element={<Infestanti />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

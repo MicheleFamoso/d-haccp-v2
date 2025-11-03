@@ -52,6 +52,9 @@ const GetPulizia = () => {
   return (
     <div>
       {loading && <h1>Caricamento</h1>}
+      <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
+        Pianificazione pulizie
+      </h1>
       <div className="grid grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
         {loading === false &&
           pulizie.map((pulizie) => (

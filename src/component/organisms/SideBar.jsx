@@ -61,7 +61,7 @@ const Sidebar = () => {
 
         <div
           onClick={() => navigate("temperatura")}
-          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+          className={`flex font-p items-center gap-3 p-2 mb-1 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
             location.pathname === "/dashboard/temperatura" &&
             "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
@@ -70,7 +70,7 @@ const Sidebar = () => {
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg  ${
-                location.pathname === "/temperatura" && " font-medium"
+                location.pathname === "/dashboard/temperatura" && " font-medium"
               }`}
             >
               Controllo Temperatura
@@ -79,8 +79,8 @@ const Sidebar = () => {
         </div>
         <div
           onClick={() => navigate("pulizie")}
-          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/pulizie" &&
+          className={`flex font-p items-center gap-3 p-2 mb-1 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+            location.pathname === "/dashboard/pulizie" &&
             "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
@@ -88,7 +88,7 @@ const Sidebar = () => {
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg   ${
-                location.pathname === "/pulizie" && " font-medium"
+                location.pathname === "/dashboard/pulizie" && " font-medium"
               }`}
             >
               Pianificazione Pulizie
@@ -96,9 +96,9 @@ const Sidebar = () => {
           )}
         </div>
         <div
-          onClick={() => navigate("/infestanti")}
+          onClick={() => navigate("infestanti")}
           className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/infestanti" &&
+            location.pathname === "/dashboard/infestanti" &&
             "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
@@ -106,7 +106,7 @@ const Sidebar = () => {
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg  ${
-                location.pathname === "/infestanti" && " font-medium"
+                location.pathname === "/dashboard/infestanti" && " font-medium"
               }`}
             >
               Controllo Infestanti
