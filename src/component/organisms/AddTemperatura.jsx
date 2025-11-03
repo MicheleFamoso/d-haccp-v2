@@ -89,7 +89,7 @@ const AddTemperatura = () => {
           value={controllo.data}
           onChange={(e) => setControllo({ ...controllo, data: e.target.value })}
         />
-        <Button type={"submit"} text={"aggiungi"} className="w-full" />
+        <Button type={"submit"} text={"aggiungi"} className="w-full mt-2" />
       </form>
     </div>
   );

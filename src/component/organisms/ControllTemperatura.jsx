@@ -93,6 +93,7 @@ const ControllTemperatura = () => {
   //UseEffect con dataControllo cosi da ri-renderizzare ad ogni cambio di data
   useEffect(() => {
     HandleTemp();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataControllo, render]);
 
   return (
