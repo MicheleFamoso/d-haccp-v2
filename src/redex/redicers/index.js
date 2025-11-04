@@ -1,9 +1,8 @@
 const initialState = {
-  temp: {
-    aggiorna: Date.now(),
-  },
-  pulizie: {
-    riaggiorna: Date.now(),
+  aggiorna: {
+    temperature: Date.now(),
+    pulizie: Date.now(),
+    infestanti: Date.now(),
   },
 };
 
@@ -12,19 +11,12 @@ const mainReducer = (state = initialState, action) => {
     case "AGGIORNA":
       return {
         ...state,
-        temp: {
-          ...state.temp,
-          aggiorna: action.payload,
+        aggiorna: {
+          ...state.aggiorna,
+          [action.key]: action.payload,
         },
       };
-    case "RIAGGIORNA":
-      return {
-        ...state,
-        pulizie: {
-          ...state.pulizie,
-          riaggiorna: action.payload,
-        },
-      };
+
     default:
       return state;
   }

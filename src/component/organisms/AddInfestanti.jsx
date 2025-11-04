@@ -2,6 +2,7 @@ import { useState } from "react";
 import ConformToggle from "../molecules/ConformToggle";
 import FormField from "../molecules/FormField";
 import Button from "../atoms/Button";
+import { useDispatch } from "react-redux";
 
 const AddInfestanti = () => {
   const [infestanti, setInfestanti] = useState({
@@ -10,6 +11,7 @@ const AddInfestanti = () => {
     insettiStriscianti: "CONFORME",
     insettiVolanti: "CONFORME",
   });
+  const dispatch = useDispatch();
 
   const handleAddInfestanti = async () => {
     const token = localStorage.getItem("token");
@@ -28,6 +30,11 @@ const AddInfestanti = () => {
         roditori: "CONFORME",
         insettiStriscianti: "CONFORME",
         insettiVolanti: "CONFORME",
+      });
+      dispatch({
+        type: "AGGIORNA",
+        key: "infestanti",
+        payload: Date.now(),
       });
 
       console.log();

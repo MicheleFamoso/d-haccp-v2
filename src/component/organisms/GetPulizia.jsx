@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { CookingPot, PaintBucket, Bubbles, Calendar } from "lucide-react";
 import CardPulizia from "./CardPulizia";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const GetPulizia = () => {
   const [pulizie, setPulizie] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   const render = useSelector((state) => {
-    return state.pulizie.riaggiorna;
+    return state.aggiorna.pulizie;
   });
 
   const handlePulizie = async () => {
@@ -40,7 +41,11 @@ const GetPulizia = () => {
       });
       if (!res.ok) throw new Error("Errore durante l'eliminazione");
 
-      handlePulizie();
+      dispatch({
+        type: "AGGIORNA",
+        key: "pulizie",
+        payload: Date.now(),
+      });
     } catch (err) {
       console.log(err);
     }

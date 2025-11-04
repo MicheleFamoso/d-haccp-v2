@@ -30,7 +30,8 @@ const AddPulizia = () => {
         frequenza: "",
       });
       dispatch({
-        type: "RIAGGIORNA",
+        type: "AGGIORNA",
+        key: "pulizie",
         payload: Date.now(),
       });
     } catch (err) {

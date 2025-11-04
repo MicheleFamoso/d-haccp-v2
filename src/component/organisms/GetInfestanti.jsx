@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import { Check, TriangleAlert } from "lucide-react";
+import { useSelector } from "react-redux";
 import CardInfestanti from "./CardInfestanti";
 
 const GetInfestanti = () => {
   const [infestanti, setInfestanti] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const render = useSelector((state) => {
+    return state.aggiorna.infestanti;
+  });
 
   const handleInfestanti = async () => {
     const token = localStorage.getItem("token");
@@ -26,7 +30,8 @@ const GetInfestanti = () => {
 
   useEffect(() => {
     handleInfestanti();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [render]);
 
   return (
     <div>

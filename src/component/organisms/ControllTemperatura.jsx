@@ -12,7 +12,7 @@ const ControllTemperatura = () => {
   const [setError] = useState(null);
 
   const render = useSelector((state) => {
-    return state.temp.aggiorna;
+    return state.aggiorna.temperatura;
   });
 
   //Const data odierna

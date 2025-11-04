@@ -35,6 +35,7 @@ const AddTemperatura = () => {
       });
       dispatch({
         type: "AGGIORNA",
+        key: "temperatura",
         payload: Date.now(),
       });
       console.log(controllo);
