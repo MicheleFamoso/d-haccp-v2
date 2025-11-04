@@ -28,6 +28,23 @@ const GetInfestanti = () => {
     }
   };
 
+  const handleDeleteInf = async (id) => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(`http://localhost:8080/infestanti/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!res.ok) throw new Error("Errore durante l'eliminazione");
+      setLoading(true);
+      handleInfestanti();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     handleInfestanti();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,7 +63,10 @@ const GetInfestanti = () => {
       <div className="grid grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
         {loading === false &&
           infestanti.map((infestante) => (
-            <CardInfestanti infestante={infestante} />
+            <CardInfestanti
+              infestante={infestante}
+              onDelete={() => handleDeleteInf(infestante.id)}
+            />
           ))}
       </div>
     </div>

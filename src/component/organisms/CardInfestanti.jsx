@@ -74,7 +74,7 @@ const CardInfestanti = ({ infestante, onDelete }) => {
           <p>Controllo roditori</p>
         </div>
 
-        {infestante.roditori !== "CONFORME" ? (
+        {infestante.roditori === "CONFORME" ? (
           <Check size={26} strokeWidth={4} className="text-green-600" />
         ) : (
           <TriangleAlert
@@ -95,7 +95,7 @@ const CardInfestanti = ({ infestante, onDelete }) => {
           <p>Controllo animali volanti</p>
         </div>
 
-        {infestante.insettiVolanti !== "CONFORME" ? (
+        {infestante.insettiVolanti === "CONFORME" ? (
           <Check size={26} strokeWidth={4} className="text-green-600" />
         ) : (
           <TriangleAlert
@@ -115,7 +115,7 @@ const CardInfestanti = ({ infestante, onDelete }) => {
           <p>Controllo animali striscianti</p>
         </div>
 
-        {infestante.insettiStriscianti !== "CONFORME" ? (
+        {infestante.insettiStriscianti === "CONFORME" ? (
           <Check size={26} strokeWidth={4} className="text-green-600" />
         ) : (
           <TriangleAlert
