@@ -115,22 +115,18 @@ const Sidebar = () => {
         </div>
 
         <div
-          onClick={() => navigate("/fornitori")}
-          className={`flex font-p items-center gap-3 p-2  rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/fornitori"
+          onClick={() => navigate("fornitori")}
+          className={`flex font-p items-center gap-3 p-2 mb-1 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+            location.pathname === "/dashboard/fornitori"
               ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
               : ""
           }`}
         >
-          <TruckIcon
-            className={`h-6 w-6  backdrop-blur-sm  ${
-              location.pathname === "/fornitori" ? " " : ""
-            }`}
-          />
+          <TruckIcon className="size-6" />
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg  ${
-                location.pathname === "/fornitori" ? " font-medium" : ""
+                location.pathname === "/dashboard/fornitori" && " font-medium"
               }`}
             >
               Fornitori
