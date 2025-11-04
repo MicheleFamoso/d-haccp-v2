@@ -43,7 +43,7 @@ const AddInfestanti = () => {
       </h1>
       <form
         onSubmit={(e) => {
-          e.defaultPrevented();
+          e.preventDefault();
           handleAddInfestanti();
         }}
       >

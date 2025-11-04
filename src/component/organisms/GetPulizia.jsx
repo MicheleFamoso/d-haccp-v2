@@ -48,7 +48,7 @@ const GetPulizia = () => {
 
   useEffect(() => {
     handlePulizie();
-  }, [render, pulizie]);
+  }, [render]);
   return (
     <div>
       {loading && <h1>Caricamento</h1>}
