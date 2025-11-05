@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Truck } from "lucide-react";
+
+import CardFornitore from "../cardComponent/CardFornitore";
 
 const Getfornitori = () => {
   const [fornitori, setFornitori] = useState([]);
@@ -23,6 +24,23 @@ const Getfornitori = () => {
     }
   };
 
+  const handleDeletForn = async (id) => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(`http://localhost:8080/fornitori/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!res.ok) throw new Error("Errore durante l'eliminazione");
+      setLoading(true);
+      handleFornitori();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     handleFornitori();
   }, []);
@@ -36,39 +54,13 @@ const Getfornitori = () => {
           Caricamento forniture...
         </h1>
       )}
-      <div className="grid grid-cols-2 xl:grid-cols-1 3xl:grid-cols-2 md:gap-5 gap-2 mt-6">
+      <div className="grid grid-cols-2 xl:grid-cols-1 3xl:grid-cols-2 md:gap-5 gap-2 mx-12 mt-6">
         {loading === false &&
           fornitori.map((fornitore) => (
-            <div
-              className="font-h  bg-bg-light/50 border-2 border-white  dark:bg-btn-dark dark:border-bg-list-dark   md:px-5 md:pt-2 shadow-md px-4 pt-0 pb-4 rounded-3xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark"
-              key={fornitore.id}
-            >
-              <div
-                className=" grid grid-cols-3 mt-4
-                 gap-6"
-              >
-                <div className="col-span-1">
-                  <div className="flex gap-3 items-center">
-                    <Truck
-                      size={56}
-                      strokeWidth={1.3}
-                      className=" text-accent-blue-medium"
-                    />
-                    <p className="text-4xl truncate ">
-                      {fornitore.nomeFornitore}
-                    </p>
-                  </div>
-
-                  <p>{fornitore.sede}</p>
-                  <p>{fornitore.telefono}</p>
-                  <p>{fornitore.email}</p>
-                </div>
-                <div className="col-span-2">
-                  <p>Prodotti</p>
-                  <p>{fornitore.prodottiForniti}</p>
-                </div>
-              </div>
-            </div>
+            <CardFornitore
+              fornitore={fornitore}
+              onDelete={() => handleDeletForn(fornitore.id)}
+            />
           ))}
       </div>
     </div>
