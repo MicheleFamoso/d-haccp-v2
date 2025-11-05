@@ -52,11 +52,13 @@ const AddPulizia = () => {
         className="px-2"
       >
         <FormField
+          required
           text={"Oggetto da pulire"}
           value={pulizia.oggetto}
           onChange={(e) => setPulizia({ ...pulizia, oggetto: e.target.value })}
         />
         <FormField
+          required
           text={"Detergente utilizzato"}
           value={pulizia.detergente}
           onChange={(e) =>
@@ -64,6 +66,7 @@ const AddPulizia = () => {
           }
         />
         <FormField
+          required
           text={"Attrezzature utilizzate per pulire"}
           value={pulizia.attrezzatureUtilizzate}
           onChange={(e) =>
@@ -74,6 +77,7 @@ const AddPulizia = () => {
           }
         />
         <FormLabel
+          required
           text={"Frequenza sanificazione"}
           onChange={(e) =>
             setPulizia({

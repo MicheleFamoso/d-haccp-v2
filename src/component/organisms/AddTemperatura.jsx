@@ -61,6 +61,7 @@ const AddTemperatura = () => {
         <div className="flex justify-between">
           <div className="w-6/12">
             <FormField
+              required
               text={"Frigo"}
               type={"number"}
               value={controllo.frigo}
@@ -71,6 +72,7 @@ const AddTemperatura = () => {
           </div>
           <div>
             <ConformToggle
+              required
               value={controllo.conformita}
               label={"Conformita"}
               onChange={(val) =>
@@ -80,12 +82,14 @@ const AddTemperatura = () => {
           </div>
         </div>
         <RangeFrigo
+          required
           value={controllo.temperatura}
           onChange={(e) =>
             setControllo({ ...controllo, temperatura: e.target.value })
           }
         />
         <FormField
+          required
           text={"Data"}
           type={"date"}
           value={controllo.data}
