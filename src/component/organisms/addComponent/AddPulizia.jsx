@@ -1,7 +1,7 @@
 import { useState } from "react";
-import FormField from "../molecules/FormField";
-import Button from "../atoms/Button";
-import FormLabel from "../molecules/FormLabel";
+import FormField from "../../molecules/FormField";
+import Button from "../../atoms/Button";
+import FormLabel from "../../molecules/FormLabel";
 import { useDispatch } from "react-redux";
 const AddPulizia = () => {
   const [pulizia, setPulizia] = useState({

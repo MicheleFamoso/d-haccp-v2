@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ConformToggle from "../molecules/ConformToggle";
-import FormField from "../molecules/FormField";
-import Button from "../atoms/Button";
+import ConformToggle from "../../molecules/ConformToggle";
+import FormField from "../../molecules/FormField";
+import Button from "../../atoms/Button";
 import { useDispatch } from "react-redux";
 
 const AddInfestanti = () => {

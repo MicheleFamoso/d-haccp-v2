@@ -1,5 +1,5 @@
-import AddTemperatura from "../organisms/AddTemperatura";
-import ControllTemperatura from "../organisms/ControllTemperatura";
+import AddTemperatura from "../organisms/addComponent/AddTemperatura";
+import ControllTemperatura from "../organisms/getComponent/ControllTemperatura";
 import { Thermometer } from "lucide-react";
 
 const Temperatura = () => {

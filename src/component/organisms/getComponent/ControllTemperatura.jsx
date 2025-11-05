@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
 import { Thermometer } from "lucide-react";
-import CardTemp from "./CardTemp";
+import CardTemp from "../cardComponent/CardTemp";
 
 const ControllTemperatura = () => {
   //const Fetch

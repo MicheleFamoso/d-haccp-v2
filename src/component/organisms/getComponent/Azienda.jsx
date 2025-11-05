@@ -1,8 +1,8 @@
 import { jwtDecode } from "jwt-decode";
 
 import { useState, useEffect } from "react";
-import Button from "../atoms/Button";
-import FormField from "../molecules/FormField";
+import Button from "../../atoms/Button";
+import FormField from "../../molecules/FormField";
 import { MapPin, Phone, Mail, Store } from "lucide-react";
 
 const Azienda = () => {

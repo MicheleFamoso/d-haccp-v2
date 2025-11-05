@@ -1,4 +1,4 @@
-import Azienda from "../organisms/Azienda";
+import Azienda from "../organisms/getComponent/Azienda";
 
 const Home = () => {
   return (

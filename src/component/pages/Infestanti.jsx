@@ -1,5 +1,5 @@
-import AddInfestanti from "../organisms/AddInfestanti";
-import GetInfestanti from "../organisms/GetInfestanti";
+import AddInfestanti from "../organisms/addComponent/AddInfestanti";
+import GetInfestanti from "../organisms/getComponent/GetInfestanti";
 
 const Infestanti = () => {
   return (

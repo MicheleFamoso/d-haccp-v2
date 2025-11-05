@@ -1,8 +1,8 @@
 import { useState } from "react";
-import FormField from "../molecules/FormField";
-import RangeFrigo from "../molecules/RangeFrigo";
-import ConformToggle from "../molecules/ConformToggle";
-import Button from "../atoms/Button";
+import FormField from "../../molecules/FormField";
+import RangeFrigo from "../../molecules/RangeFrigo";
+import ConformToggle from "../../molecules/ConformToggle";
+import Button from "../../atoms/Button";
 import { useDispatch } from "react-redux";
 
 const AddTemperatura = () => {

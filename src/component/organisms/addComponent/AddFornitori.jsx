@@ -1,6 +1,6 @@
 import { useState } from "react";
-import FormField from "../molecules/FormField";
-import Button from "../atoms/Button";
+import FormField from "../../molecules/FormField";
+import Button from "../../atoms/Button";
 
 const AddFornitori = () => {
   const [fornitore, setFornitore] = useState({

@@ -1,76 +1,76 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import CardInfestanti from "./CardInfestanti";
 
-const GetInfestanti = () => {
-  const [infestanti, setInfestanti] = useState([]);
+import CardPulizia from "../cardComponent/CardPulizia";
+import { useSelector, useDispatch } from "react-redux";
+
+const GetPulizia = () => {
+  const [pulizie, setPulizie] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
   const render = useSelector((state) => {
-    return state.aggiorna.infestanti;
+    return state.aggiorna.pulizie;
   });
 
-  const handleInfestanti = async () => {
+  const handlePulizie = async () => {
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch("http://localhost:8080/infestanti/all", {
+      const response = await fetch("http://localhost:8080/pulizie", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       if (!response.ok) throw new Error();
       const data = await response.json();
-      setInfestanti(data);
+      setPulizie(data);
       setLoading(false);
-      console.log(infestanti, data);
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const handleDeleteInf = async (id) => {
+  const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:8080/infestanti/${id}`, {
+      const res = await fetch(`http://localhost:8080/pulizie/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       if (!res.ok) throw new Error("Errore durante l'eliminazione");
-      setLoading(true);
-      handleInfestanti();
-    } catch (error) {
-      console.log(error);
+
+      dispatch({
+        type: "AGGIORNA",
+        key: "pulizie",
+        payload: Date.now(),
+      });
+    } catch (err) {
+      console.log(err);
     }
   };
 
   useEffect(() => {
-    handleInfestanti();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    handlePulizie();
   }, [render]);
-
   return (
     <div>
+      {loading && <h1>Caricamento</h1>}
       <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
-        Controllo animali infestanti
+        Pianificazione pulizie
       </h1>
-      {loading && (
-        <div>
-          <h1>Caricamento in corso</h1>
-        </div>
-      )}
       <div className="grid grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
         {loading === false &&
-          infestanti.map((infestante) => (
-            <CardInfestanti
-              infestante={infestante}
-              onDelete={() => handleDeleteInf(infestante.id)}
+          pulizie.map((pulizie) => (
+            <CardPulizia
+              key={pulizie.id}
+              pul={pulizie}
+              onDelete={() => handleDelete(pulizie.id)}
             />
           ))}
       </div>
     </div>
   );
 };
-
-export default GetInfestanti;
+export default GetPulizia;

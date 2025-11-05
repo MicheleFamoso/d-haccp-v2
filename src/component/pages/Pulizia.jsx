@@ -1,5 +1,5 @@
-import AddPulizia from "../organisms/AddPulizia";
-import GetPulizia from "../organisms/GetPulizia";
+import AddPulizia from "../organisms/addComponent/AddPulizia";
+import GetPulizia from "../organisms/getComponent/GetPulizia";
 
 const Pulizia = () => {
   return (
