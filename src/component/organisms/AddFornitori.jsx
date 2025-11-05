@@ -80,6 +80,7 @@ const AddFornitori = () => {
           required
           text={"Email fornitore"}
           value={fornitore.email}
+          type={"email"}
           onChange={(e) =>
             setFornitore({ ...fornitore, email: e.target.value })
           }
