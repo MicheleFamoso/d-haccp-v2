@@ -23,6 +23,22 @@ const GetDipendenti = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await fetch(`http://localhost:8080/admin/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!res.ok) throw new Error("errore nell'eliminazione del dipendente");
+      handleDipendenti();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     handleDipendenti();
   }, []);
@@ -40,7 +56,10 @@ const GetDipendenti = () => {
       <div className="grid grid-cols-2 xl:grid-cols-2 3xl:grid-cols-2 md:gap-5 gap-2 mx-12 mt-6">
         {!loading &&
           dipendenti.map((dipendente) => (
-            <CardDipendete dipendente={dipendente} />
+            <CardDipendete
+              dipendente={dipendente}
+              onDelete={() => handleDelete(dipendente.id)}
+            />
           ))}
       </div>
     </div>
