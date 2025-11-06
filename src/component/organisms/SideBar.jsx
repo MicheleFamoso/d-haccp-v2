@@ -154,9 +154,9 @@ const Sidebar = () => {
 
         {ruolo === "ADMIN" && (
           <div
-            onClick={() => navigate("/utenti")}
+            onClick={() => navigate("dipendenti")}
             className={`flex font-p items-center gap-3 p-2 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-              location.pathname === "/utenti" &&
+              location.pathname === "/dashboard/dipendenti" &&
               "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
             }`}
           >
@@ -164,7 +164,7 @@ const Sidebar = () => {
             {isExpanded && (
               <span
                 className={`lg:text-sm text-lg  ${
-                  location.pathname === "/utenti" && "font-medium"
+                  location.pathname === "/dashboard/dipendenti" && "font-medium"
                 }`}
               >
                 Dipendenti

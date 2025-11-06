@@ -10,6 +10,7 @@ import Pulizia from "./component/pages/Pulizia";
 import Infestanti from "./component/pages/Infestanti";
 import Fornitori from "./component/pages/Fornitori";
 import Forniture from "./component/pages/Forniture";
+import Dipendenti from "./component/pages/Dipendenti";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="infestanti" element={<Infestanti />}></Route>
           <Route path="fornitori" element={<Fornitori />}></Route>
           <Route path="forniture" element={<Forniture />}></Route>
+          <Route path="dipendenti" element={<Dipendenti />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

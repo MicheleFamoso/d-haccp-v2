@@ -68,7 +68,7 @@ const CardFornitore = ({ fornitore, onDelete }) => {
             {fornitore.prodottiForniti.map((prodotti, index) => (
               <p
                 key={index}
-                className=" text-white text-xl font-semibold bg-slate-400 dark:bg-slate-600  px-3 py-1  rounded-4xl"
+                className=" text-white text-xl font-semibold bg-slate-400/75 dark:bg-slate-600  px-3 py-1  rounded-4xl"
               >
                 {prodotti}
               </p>
