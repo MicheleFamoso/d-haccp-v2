@@ -5,6 +5,7 @@ const initialState = {
     infestanti: Date.now(),
     fornitori: Date.now(),
     forniture: Date.now(),
+    dipendenti: Date.now(),
   },
   fornitori: [],
 };

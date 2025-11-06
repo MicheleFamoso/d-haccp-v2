@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import CardDipendete from "../cardComponent/CardDipendenti";
-
+import { useSelector } from "react-redux";
 const GetDipendenti = () => {
   const [dipendenti, setDipendenti] = useState([]);
   const [loading, setLoading] = useState(true);
+  const render = useSelector((state) => {
+    return state.aggiorna.dipendenti;
+  });
 
   const handleDipendenti = async () => {
     const token = localStorage.getItem("token");
@@ -41,7 +44,7 @@ const GetDipendenti = () => {
 
   useEffect(() => {
     handleDipendenti();
-  }, []);
+  }, [render]);
 
   return (
     <div>

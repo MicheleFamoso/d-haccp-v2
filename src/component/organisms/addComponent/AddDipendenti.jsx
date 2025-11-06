@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormField from "../../molecules/FormField";
 import Button from "../../atoms/Button";
+import { useDispatch } from "react-redux";
 
 const AddDipendenti = () => {
   const [dipendete, SetDipendente] = useState({
@@ -10,6 +11,7 @@ const AddDipendenti = () => {
     email: "",
     password: "",
   });
+  const dispatch = useDispatch();
 
   const handleDipendenti = async () => {
     const token = localStorage.getItem("token");
@@ -30,6 +32,11 @@ const AddDipendenti = () => {
         username: "",
         email: "",
         password: "",
+      });
+      dispatch({
+        type: "AGGIORNA",
+        key: "dipendenti",
+        payload: Date.now(),
       });
     } catch (err) {
       console.log(err);
