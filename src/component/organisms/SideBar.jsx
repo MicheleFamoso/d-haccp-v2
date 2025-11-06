@@ -134,9 +134,9 @@ const Sidebar = () => {
           )}
         </div>
         <div
-          onClick={() => navigate("/forniture")}
+          onClick={() => navigate("forniture")}
           className={`flex font-p items-center gap-3 p-2 mb-6 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
-            location.pathname === "/forniture" &&
+            location.pathname === "/dashboard/forniture" &&
             "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
           }`}
         >
@@ -144,7 +144,7 @@ const Sidebar = () => {
           {isExpanded && (
             <span
               className={`lg:text-sm text-lg  ${
-                location.pathname === "/forniture" && "font-medium"
+                location.pathname === "/dashboard/forniture" && "font-medium"
               }`}
             >
               Forniture

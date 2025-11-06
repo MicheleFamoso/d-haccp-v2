@@ -5,6 +5,7 @@ const initialState = {
     infestanti: Date.now(),
     fornitori: Date.now(),
   },
+  fornitori: [],
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -16,6 +17,17 @@ const mainReducer = (state = initialState, action) => {
           ...state.aggiorna,
           [action.key]: action.payload,
         },
+      };
+    case "SET_FORNITORI":
+      return {
+        ...state,
+        fornitori: action.payload,
+      };
+
+    case "REMOVE_FORNITORE":
+      return {
+        ...state,
+        fornitori: state.fornitori.filter((f) => f.id !== action.payload),
       };
 
     default:

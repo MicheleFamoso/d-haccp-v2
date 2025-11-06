@@ -9,6 +9,7 @@ import Temperatura from "./component/pages/Temperatura";
 import Pulizia from "./component/pages/Pulizia";
 import Infestanti from "./component/pages/Infestanti";
 import Fornitori from "./component/pages/Fornitori";
+import Forniture from "./component/pages/Forniture";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="pulizie" element={<Pulizia />}></Route>
           <Route path="infestanti" element={<Infestanti />}></Route>
           <Route path="fornitori" element={<Fornitori />}></Route>
+          <Route path="forniture" element={<Forniture />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

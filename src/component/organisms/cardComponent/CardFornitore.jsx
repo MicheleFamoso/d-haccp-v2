@@ -37,7 +37,7 @@ const CardFornitore = ({ fornitore, onDelete }) => {
           </div>
           <div className="flex gap-2 items-center mt-2">
             <Mail size={22} strokeWidth={2} className="text-red-400 " />
-            <p>{fornitore.email}</p>
+            <p className="truncate">{fornitore.email}</p>
           </div>
         </div>
         <div className="col-span-2">

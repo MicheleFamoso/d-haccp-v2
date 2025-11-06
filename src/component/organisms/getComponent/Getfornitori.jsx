@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import CardFornitore from "../cardComponent/CardFornitore";
 
 const Getfornitori = () => {
-  const [fornitori, setFornitori] = useState([]);
+  const dispatch = useDispatch();
+  const fornitori = useSelector((state) => state.fornitori);
+  const render = useSelector((state) => state.aggiorna.fornitori);
   const [loading, setLoading] = useState(true);
-  const render = useSelector((state) => {
-    return state.aggiorna.fornitori;
-  });
+
   const handleFornitori = async () => {
     const token = localStorage.getItem("token");
     try {
@@ -16,10 +16,16 @@ const Getfornitori = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+
       if (!response.ok) throw new Error();
+
       const data = await response.json();
-      setFornitori(data);
-      console.log(data);
+
+      dispatch({
+        type: "SET_FORNITORI",
+        payload: data,
+      });
+
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -35,9 +41,13 @@ const Getfornitori = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+
       if (!res.ok) throw new Error("Errore durante l'eliminazione");
-      setLoading(true);
-      handleFornitori();
+
+      dispatch({
+        type: "REMOVE_FORNITORE",
+        payload: id,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -46,20 +56,24 @@ const Getfornitori = () => {
   useEffect(() => {
     handleFornitori();
   }, [render]);
+
   return (
     <div>
       <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
         Fornitori
       </h1>
+
       {loading && (
         <h1 className="text-center text-accent-blue-medium font-black font-p">
           Caricamento forniture...
         </h1>
       )}
+
       <div className="grid grid-cols-2 xl:grid-cols-1 3xl:grid-cols-2 md:gap-5 gap-2 mx-12 mt-6">
-        {loading === false &&
+        {!loading &&
           fornitori.map((fornitore) => (
             <CardFornitore
+              key={fornitore.id}
               fornitore={fornitore}
               onDelete={() => handleDeletForn(fornitore.id)}
             />
@@ -68,4 +82,5 @@ const Getfornitori = () => {
     </div>
   );
 };
+
 export default Getfornitori;
