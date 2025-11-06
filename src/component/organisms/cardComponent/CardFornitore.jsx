@@ -1,6 +1,10 @@
 import { Truck, Map, Mail, Phone, Ellipsis, Trash } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
+
+import { jwtDecode } from "jwt-decode";
 const CardFornitore = ({ fornitore, onDelete }) => {
+  const token = localStorage.getItem("token");
+  const ruolo = token ? jwtDecode(token).role : null;
   const [menu, setMenu] = useState(false);
   const menuRef = useRef(null);
 
@@ -41,28 +45,31 @@ const CardFornitore = ({ fornitore, onDelete }) => {
           </div>
         </div>
         <div className="col-span-2">
-          <div ref={menuRef} className="flex justify-end relative">
-            <button
-              onClick={() => setMenu(!menu)}
-              className="hover:bg-text-tertiary-light  rounded-full cursor-pointer"
-            >
-              <Ellipsis className="hover:text-white" />
-            </button>
-            {menu && (
-              <div className="absolute right-0 top-8 bg-white/60 dark:bg-bg-list-dark/90 border-1 backdrop-blur-sm border-white dark:border-bg-list-dark   rounded-2xl shadow-2xl">
-                <div
-                  onClick={() => {
-                    onDelete(fornitore.id);
-                    setMenu(false);
-                  }}
-                  className="flex items-center hover:bg-alert-2 px-6  hover:text-white py-2 rounded-3xl gap-3"
-                >
-                  <Trash size={22} className=" cursor-pointer" />
-                  <button className=" cursor-pointer">Elimina</button>
+          {ruolo === "ADMIN" && (
+            <div ref={menuRef} className="flex justify-end relative">
+              <button
+                onClick={() => setMenu(!menu)}
+                className="hover:bg-text-tertiary-light  rounded-full cursor-pointer"
+              >
+                <Ellipsis className="hover:text-white" />
+              </button>
+              {menu && (
+                <div className="absolute right-0 top-8 bg-white/60 dark:bg-bg-list-dark/90 border-1 backdrop-blur-sm border-white dark:border-bg-list-dark   rounded-2xl shadow-2xl">
+                  <div
+                    onClick={() => {
+                      onDelete(fornitore.id);
+                      setMenu(false);
+                    }}
+                    className="flex items-center hover:bg-alert-2 px-6  hover:text-white py-2 rounded-3xl gap-3"
+                  >
+                    <Trash size={22} className=" cursor-pointer" />
+                    <button className=" cursor-pointer">Elimina</button>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
+
           <p className="text-xl mb-6">Prodotti forniti</p>
           <div className="flex gap-3 mt-2 flex-wrap">
             {fornitore.prodottiForniti.map((prodotti, index) => (
