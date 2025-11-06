@@ -4,9 +4,10 @@ import FormField from "../../molecules/FormField";
 import ConformToggle from "../../molecules/ConformToggle";
 import FormSelect from "../../molecules/FormSelect";
 import Button from "../../atoms/Button";
+import { useDispatch } from "react-redux";
 const AddForniture = () => {
   const fornitori = useSelector((state) => state.fornitori);
-
+  const dispatch = useDispatch();
   const [fornitura, setFornitura] = useState({
     data: new Date().toISOString().split("T")[0],
     fornitoreId: "",
@@ -33,6 +34,11 @@ const AddForniture = () => {
         prodotto: "",
         conformita: "CONFORME",
         lotto: "",
+      });
+      dispatch({
+        type: "AGGIORNA",
+        key: "forniture",
+        payload: Date.now(),
       });
       console.log(fornitura);
     } catch (err) {

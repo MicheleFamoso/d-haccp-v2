@@ -9,9 +9,9 @@ import {
   Trash,
   Ellipsis,
 } from "lucide-react";
-import { useState, useEffect, useRef, onDelete } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const CardForniture = ({ fornitura }) => {
+const CardForniture = ({ fornitura, onDelete }) => {
   const [menu, setMenu] = useState(false);
   const menuRef = useRef(null);
 
