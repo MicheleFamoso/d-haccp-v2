@@ -3,6 +3,7 @@ const initialState = {
     temperature: Date.now(),
     pulizie: Date.now(),
     infestanti: Date.now(),
+    fornitori: Date.now(),
   },
 };
 

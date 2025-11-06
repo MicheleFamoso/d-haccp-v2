@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FormField from "../../molecules/FormField";
 import Button from "../../atoms/Button";
-
+import { useDispatch } from "react-redux";
 const AddFornitori = () => {
   const [fornitore, setFornitore] = useState({
     nomeFornitore: "",
@@ -10,7 +10,7 @@ const AddFornitori = () => {
     email: "",
     prodottiForniti: [],
   });
-
+  const dispatch = useDispatch();
   const handleAddFornitori = async () => {
     const payload = {
       ...fornitore,
@@ -36,6 +36,11 @@ const AddFornitori = () => {
         telefono: "",
         email: "",
         prodottiForniti: "",
+      });
+      dispatch({
+        type: "AGGIORNA",
+        key: "fornitori",
+        payload: Date.now(),
       });
       console.log(fornitore);
     } catch (err) {

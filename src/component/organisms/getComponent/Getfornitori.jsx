@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-
+import { useSelector } from "react-redux";
 import CardFornitore from "../cardComponent/CardFornitore";
 
 const Getfornitori = () => {
   const [fornitori, setFornitori] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const render = useSelector((state) => {
+    return state.aggiorna.fornitori;
+  });
   const handleFornitori = async () => {
     const token = localStorage.getItem("token");
     try {
@@ -43,7 +45,7 @@ const Getfornitori = () => {
 
   useEffect(() => {
     handleFornitori();
-  }, []);
+  }, [render]);
   return (
     <div>
       <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
