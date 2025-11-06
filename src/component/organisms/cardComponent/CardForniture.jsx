@@ -6,9 +6,25 @@ import {
   Calendar,
   Beef,
   QrCode,
+  Trash,
+  Ellipsis,
 } from "lucide-react";
+import { useState, useEffect, useRef, onDelete } from "react";
 
 const CardForniture = ({ fornitura }) => {
+  const [menu, setMenu] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
     <div key={fornitura.id}>
       <div
@@ -19,6 +35,28 @@ const CardForniture = ({ fornitura }) => {
         }   md:px-5 md:pt-2 shadow-md px-4 pt-0 pb-4 rounded-3xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark`}
       >
         {" "}
+        <div ref={menuRef} className="flex justify-end relative">
+          <button
+            onClick={() => setMenu(!menu)}
+            className="hover:bg-text-tertiary-light p-1 rounded-full cursor-pointer"
+          >
+            <Ellipsis className="hover:text-white" />
+          </button>
+          {menu && (
+            <div className="absolute right-0 top-8 bg-white/60 dark:bg-bg-list-dark/90 border-1 backdrop-blur-sm border-white dark:border-bg-list-dark   rounded-2xl shadow-2xl">
+              <div
+                onClick={() => {
+                  onDelete(fornitura.id);
+                  setMenu(false);
+                }}
+                className="flex items-center hover:bg-alert-2 px-6  hover:text-white py-2 rounded-3xl gap-3"
+              >
+                <Trash size={22} className=" cursor-pointer" />
+                <button className=" cursor-pointer">Elimina</button>
+              </div>
+            </div>
+          )}
+        </div>{" "}
         <div className="flex justify-between mb-4">
           <div className="flex gap-2 items-center text-text-primary-light font-medium dark:text-text-primary-dark">
             <Calendar
