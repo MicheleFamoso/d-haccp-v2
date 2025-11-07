@@ -23,7 +23,7 @@ const DashboardCard = ({ controllo }) => {
         controllo.conformita !== "CONFORME"
           ? "  bg-red-100 border-2 border-red-200 dark:bg-alert-3"
           : "  bg-bg-light/50 border-2 border-white  dark:bg-btn-dark dark:border-bg-list-dark "
-      }   md:px-5 md:pt-2 shadow-md px-4 pt-0 pb-4 rounded-3xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark`}
+      }   md:px-5 md:pt-2 shadow-md inset-shadow-sm  px-4 pt-0 pb-4 rounded-3xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark`}
     >
       <div className="flex items-center gap-2 mb-6">
         {icons[controllo.tipoControllo]}

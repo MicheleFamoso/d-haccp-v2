@@ -136,7 +136,7 @@ const Azienda = () => {
   };
 
   return (
-    <div>
+    <div className="bg-section-light px-3  py-5 rounded-3xl shadow-lg dark:bg-section-dark">
       {loading && (
         <p className="text-xl text-center w-full py-10">
           Caricamento in corso...
