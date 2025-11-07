@@ -88,7 +88,7 @@ const User = () => {
       </button>
 
       <div
-        className={`absolute -left-15 mt-2 w-70 bg-section-light/50 backdrop-blur-md dark:bg-section-dark/80 shadow-xl border-1 border-white dark:border-black rounded-3xl px-4 z-50 transform transition-all duration-300 ${
+        className={`absolute -left-15 mt-2 w-70 bg-section-light/50 backdrop-blur-md dark:bg-section-dark/80 shadow-xl border-1 border-white dark:border-black rounded-3xl px-4 z-55 transform transition-all duration-300 ${
           open
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-2 pointer-events-none"
