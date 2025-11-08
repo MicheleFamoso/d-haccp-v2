@@ -20,7 +20,7 @@ const Sidebar = () => {
   const token = localStorage.getItem("token");
   const ruolo = token ? jwtDecode(token).role : null;
   return (
-    <div className="mt-4">
+    <div className="">
       <div
         className={`ml-4   hidden md:flex bg-section-light dark:bg-section-dark dark:text-text-secondary-dark text-text-secondary-light rounded-4xl ${
           isExpanded ? "w-60" : "w-16 "
