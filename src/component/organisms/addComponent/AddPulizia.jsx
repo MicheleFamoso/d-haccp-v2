@@ -3,7 +3,7 @@ import FormField from "../../molecules/FormField";
 import Button from "../../atoms/Button";
 import FormLabel from "../../molecules/FormLabel";
 import { useDispatch } from "react-redux";
-const AddPulizia = () => {
+const AddPulizia = ({ onClose }) => {
   const [pulizia, setPulizia] = useState({
     oggetto: "",
     detergente: "",
@@ -34,6 +34,7 @@ const AddPulizia = () => {
         key: "pulizie",
         payload: Date.now(),
       });
+      onClose();
     } catch (err) {
       console.log(err);
     }

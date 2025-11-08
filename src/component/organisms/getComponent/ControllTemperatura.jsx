@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
-
+import { Plus } from "lucide-react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
-import { Thermometer } from "lucide-react";
+
 import CardTemp from "../cardComponent/CardTemp";
+import AddTempMob from "../addComponent/AddTempMob";
 
 const ControllTemperatura = () => {
   //const Fetch
   const [temperature, SetTemperature] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [setError] = useState(null);
+
+  const [add, setAdd] = useState(false);
 
   const render = useSelector((state) => {
     return state.aggiorna.temperatura;
@@ -98,8 +101,8 @@ const ControllTemperatura = () => {
 
   return (
     <div className="h-10/12">
-      <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
-        Controllo temperature
+      <h1 className="font-h text-3xl md:text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
+        Temperature
       </h1>
 
       <nav className="flex items-center justify-center gap-6 select-none">
@@ -130,13 +133,20 @@ const ControllTemperatura = () => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
+      <div className="grid md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
         {isLoading && <div> Caricamento</div>}
         {isLoading === false &&
           temperature.map((temp) => (
             <CardTemp temp={temp} onDelete={() => handleDelete(temp.id)} />
           ))}
       </div>
+      <div className="md:hidden fixed bottom-6 right-6 z-50">
+        <button onClick={() => setAdd(true)}>
+          <Plus className="size-16 p-2 bg-accent-blue-light shadow-xl text-white rounded-4xl " />
+        </button>
+      </div>
+
+      <AddTempMob isOpen={add} onClose={() => setAdd(false)} />
     </div>
   );
 };

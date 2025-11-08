@@ -5,7 +5,7 @@ import ConformToggle from "../../molecules/ConformToggle";
 import Button from "../../atoms/Button";
 import { useDispatch } from "react-redux";
 
-const AddTemperatura = () => {
+const AddTemperatura = ({ onClose }) => {
   const dispatch = useDispatch();
 
   const [controllo, setControllo] = useState({
@@ -38,6 +38,7 @@ const AddTemperatura = () => {
         key: "temperatura",
         payload: Date.now(),
       });
+      onClose();
       console.log(controllo);
     } catch (err) {
       console.log(err);
