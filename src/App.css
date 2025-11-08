@@ -52,3 +52,9 @@
   grid-template-columns: repeat(7, minmax(150px, 1fr));
   width: max-content;
 }
+
+@media (max-width: 768px) {
+  .week-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+}

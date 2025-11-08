@@ -75,8 +75,11 @@ const GetDash = () => {
   };
 
   return (
-    <main className="">
-      <div className="sticky top-0 z-50 backdrop-blur-md dark:bg-section-dark/90  bg-section-light/60 py-4">
+    <main className="relative min-h-screen">
+      <h1 className="md:hidden text-center font-h text-3xl py-6 font-bold text-text-secondary-light dark:text-text-secondary-dark">
+        Dashboard
+      </h1>
+      <div className="hidden  md:flex sticky top-0 z-50 bg-section-light/80 dark:bg-section-dark/80  backdrop-blur-md md:dark:bg-section-dark/90  md:bg-section-light/60 py-4">
         <nav className="   flex justify-center items-center shadow-md bg-btn-light dark:bg-btn-dark rounded-4xl w-fit py-1 px-3 mx-auto">
           <button
             onClick={() => setCurrentMonth(subWeeks(currentMonth, 1))}
@@ -85,11 +88,13 @@ const GetDash = () => {
             <ChevronLeft size={40} strokeWidth={2} />
           </button>
           <div className="font-p font-bold text-accent-blue-medium mx-12">
-            <h1 className="text-lg text-center">
+            <h1 className="md:text-lg text-center">
               {format(startDate, "dd", { locale: it })} -{" "}
               {format(endDate, "dd", { locale: it })}
             </h1>
-            <p className="text-center text-md">{formatMonthDisplay()}</p>
+            <p className="text-center text-xs md:text-md">
+              {formatMonthDisplay()}
+            </p>
           </div>
 
           <button
@@ -101,28 +106,31 @@ const GetDash = () => {
         </nav>
       </div>
 
-      <div className="pl-5">
+      <div className="md:pl-5 ">
         {sortedDates.length === 0 ? (
           <p className="text-text-secondary-light dark:text-text-secondary-dark font-p text-xl mt-8 text-center">
             Nessun controllo disponibile per questa settimana.
           </p>
         ) : (
-          <div className="week-wrapper mt-6">
-            <div className="week-grid gap-6 ">
+          <div className="week-wrapper md:mt-6">
+            <div className="week-grid md:gap-6 ">
               {sortedDates.map((date) => (
                 <div key={date} className="flex flex-col items-center">
                   {/* header del giorno */}
-                  <div className="flex flex-col items-center justify-center  text-text-primary-dark font-h font-bold w-14 h-14 bg-red-500 shadow-md mb-4 rounded-full ">
-                    <p className="md:text-lg text-xs">
-                      {format(parseISO(date), "d", { locale: it })}
-                    </p>
-                    <p className="md:text-sm text-2xs">
+
+                  <div className="">
+                    <div className="flex flex-col items-center justify-center  text-text-primary-dark font-h font-bold w-8 h-8 bg-red-500 shadow-md mb-1 rounded-full ">
+                      <p className="md:text-lg text-xs">
+                        {format(parseISO(date), "d", { locale: it })}
+                      </p>
+                    </div>
+                    <p className="md:text-sm text-xs font-bold text-red-500">
                       {format(parseISO(date), "EEE", { locale: it })}
                     </p>
                   </div>
 
                   {/* lista controlli */}
-                  <div className="flex flex-col items-center gap-4 mb-5">
+                  <div className="flex flex-col  items-center md:gap-4 mb-5 mt-2">
                     {groupedByDate[date].map((controllo) => (
                       <DashboardCard controllo={controllo} />
                     ))}
@@ -132,6 +140,32 @@ const GetDash = () => {
             </div>
           </div>
         )}
+      </div>
+      <div className="md:hidden fixed bottom-4 left-0 w-full z-50  py-2">
+        <nav className="   flex justify-center items-center shadow-md bg-btn-light/20 backdrop-blur-xl dark:bg-btn-dark/60 border-1 border-white dark:border-bg-list-dark/20 rounded-4xl w-fit py-1 px-3 mx-auto">
+          <button
+            onClick={() => setCurrentMonth(subWeeks(currentMonth, 1))}
+            className="dark:text-text-secondary-dark   text-text-tertiary-light bg-btn-light  dark:bg-btn-dark hover:bg-bg-list-light dark:hover:bg-icon-gray-dark backdrop-blur-xs   font-h font-bold  p-1 rounded-full  cursor-pointer"
+          >
+            <ChevronLeft size={40} strokeWidth={2} />
+          </button>
+          <div className="font-p font-bold text-accent-blue-medium mx-12">
+            <h1 className="md:text-lg text-center">
+              {format(startDate, "dd", { locale: it })} -{" "}
+              {format(endDate, "dd", { locale: it })}
+            </h1>
+            <p className="text-center text-xs md:text-md">
+              {formatMonthDisplay()}
+            </p>
+          </div>
+
+          <button
+            onClick={() => setCurrentMonth(addWeeks(currentMonth, 1))}
+            className="dark:text-text-secondary-dark   text-text-tertiary-light bg-btn-light  dark:bg-btn-dark hover:bg-bg-list-light dark:hover:bg-icon-gray-dark backdrop-blur-xs   font-h font-bold  p-1 rounded-full  cursor-pointer"
+          >
+            <ChevronRight size={40} strokeWidth={2} />
+          </button>
+        </nav>
       </div>
     </main>
   );
