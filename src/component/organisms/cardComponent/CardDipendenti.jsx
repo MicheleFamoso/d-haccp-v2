@@ -17,10 +17,10 @@ const CardDipendete = ({ dipendente, onDelete }) => {
   return (
     <div>
       <div
-        className="font-h  bg-bg-light/50 border-2 border-white  dark:bg-btn-dark dark:border-bg-list-dark   md:px-5 md:pt-2 shadow-md px-4 pt-0 pb-6 rounded-3xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark"
+        className="font-h  bg-bg-light/50 border-2 border-white  dark:bg-btn-dark dark:border-bg-list-dark   md:px-5 md:pt-2 shadow-md  pt-2 pb-6 rounded-3xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark"
         key={dipendente.id}
       >
-        <div ref={menuRef} className="flex justify-end relative">
+        <div ref={menuRef} className="flex justify-end relative mr-2">
           <button
             onClick={() => setMenu(!menu)}
             className="hover:bg-text-tertiary-light  rounded-full cursor-pointer"

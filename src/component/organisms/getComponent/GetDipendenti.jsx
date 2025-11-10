@@ -60,7 +60,7 @@ const GetDipendenti = () => {
           Caricamento...
         </h1>
       )}
-      <div className="grid md:grid-cols-2 xl:grid-cols-2 3xl:grid-cols-3 md:gap-5 gap-2 md:mx-12 mt-6">
+      <div className="grid md:grid-cols-2 xl:grid-cols-2 3xl:grid-cols-3 md:gap-5 gap-2 md:mx-12 mt-6 ">
         {!loading &&
           dipendenti.map((dipendente) => (
             <CardDipendete
