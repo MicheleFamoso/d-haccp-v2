@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import CardForniture from "../cardComponent/CardForniture";
-
+import { Plus } from "lucide-react";
+import AddFornitureMob from "../addComponent/AddFornitureMob";
 const GetForniture = () => {
   const [forniture, setForniture] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [add, setAdd] = useState(false);
   const render = useSelector((state) => {
     return state.aggiorna.forniture;
   });
@@ -53,7 +54,7 @@ const GetForniture = () => {
         Forniture
       </h1>
       {loading && <h3>Caricamento...</h3>}
-      <div className="grid grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-10 gap-2 mt-6 mx-12">
+      <div className="grid md:grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-10 gap-2 mt-6 md:mx-12">
         {loading === false &&
           forniture.map((fornitura) => (
             <CardForniture
@@ -62,6 +63,12 @@ const GetForniture = () => {
             />
           ))}
       </div>
+      <div className="md:hidden fixed bottom-6 right-6 z-50">
+        <button onClick={() => setAdd(true)}>
+          <Plus className="size-16 p-2 bg-accent-blue-light shadow-xl text-white rounded-4xl " />
+        </button>
+      </div>
+      <AddFornitureMob isOpen={add} onClose={() => setAdd(false)} />
     </div>
   );
 };

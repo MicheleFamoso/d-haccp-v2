@@ -5,7 +5,7 @@ import ConformToggle from "../../molecules/ConformToggle";
 import FormSelect from "../../molecules/FormSelect";
 import Button from "../../atoms/Button";
 import { useDispatch } from "react-redux";
-const AddForniture = () => {
+const AddForniture = ({ onClose }) => {
   const fornitori = useSelector((state) => state.fornitori);
   const dispatch = useDispatch();
   const [fornitura, setFornitura] = useState({
@@ -40,6 +40,7 @@ const AddForniture = () => {
         key: "forniture",
         payload: Date.now(),
       });
+      onClose();
       console.log(fornitura);
     } catch (err) {
       console.log(err);
