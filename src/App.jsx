@@ -11,6 +11,7 @@ import Infestanti from "./component/pages/Infestanti";
 import Fornitori from "./component/pages/Fornitori";
 import Forniture from "./component/pages/Forniture";
 import Dipendenti from "./component/pages/Dipendenti";
+import AziendaMobile from "./component/pages/AziendaMobile";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="fornitori" element={<Fornitori />}></Route>
           <Route path="forniture" element={<Forniture />}></Route>
           <Route path="dipendenti" element={<Dipendenti />}></Route>
+          <Route path="azienda" element={<AziendaMobile />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

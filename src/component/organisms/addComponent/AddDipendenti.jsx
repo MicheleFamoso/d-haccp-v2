@@ -3,7 +3,7 @@ import FormField from "../../molecules/FormField";
 import Button from "../../atoms/Button";
 import { useDispatch } from "react-redux";
 
-const AddDipendenti = () => {
+const AddDipendenti = ({ onClose }) => {
   const [dipendete, SetDipendente] = useState({
     nome: "",
     cognome: "",
@@ -38,6 +38,7 @@ const AddDipendenti = () => {
         key: "dipendenti",
         payload: Date.now(),
       });
+      onClose();
     } catch (err) {
       console.log(err);
     }

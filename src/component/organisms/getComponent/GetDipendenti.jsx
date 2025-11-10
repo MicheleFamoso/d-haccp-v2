@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import CardDipendete from "../cardComponent/CardDipendenti";
 import { useSelector } from "react-redux";
+import { Plus } from "lucide-react";
+
+import AddDipeMob from "../addComponent/AddDipeMob";
 const GetDipendenti = () => {
   const [dipendenti, setDipendenti] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [add, setAdd] = useState(false);
   const render = useSelector((state) => {
     return state.aggiorna.dipendenti;
   });
@@ -56,7 +60,7 @@ const GetDipendenti = () => {
           Caricamento...
         </h1>
       )}
-      <div className="grid grid-cols-2 xl:grid-cols-2 3xl:grid-cols-3 md:gap-5 gap-2 mx-12 mt-6">
+      <div className="grid md:grid-cols-2 xl:grid-cols-2 3xl:grid-cols-3 md:gap-5 gap-2 md:mx-12 mt-6">
         {!loading &&
           dipendenti.map((dipendente) => (
             <CardDipendete
@@ -65,6 +69,12 @@ const GetDipendenti = () => {
             />
           ))}
       </div>
+      <div className="md:hidden fixed bottom-6 right-6 z-50">
+        <button onClick={() => setAdd(true)}>
+          <Plus className="size-16 p-2 bg-accent-blue-light shadow-xl text-white rounded-4xl " />
+        </button>
+      </div>
+      <AddDipeMob isOpen={add} onClose={() => setAdd(false)} />
     </div>
   );
 };

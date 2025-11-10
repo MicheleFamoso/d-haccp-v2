@@ -218,22 +218,19 @@ const SideMobile = () => {
               )}
               <div
                 onClick={() => {
-                  navigate("/azienda");
+                  navigate("/dashboard/azienda");
                   setIsOpen(false);
                 }}
-                className={`flex items-center gap-3 p-2 rounded-3xl cursor-pointer hover:bg-salviaScuro ${
-                  location.pathname === "/azienda" ? "bg-ambra" : ""
+                className={` flex font-p items-center gap-3 p-2 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark${
+                  location.pathname === "dashboard/azienda" &&
+                  "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
                 }`}
               >
-                <BuildingStorefrontIcon
-                  className={`h-6 w-6 text-slate-800   backdrop-blur-sm  transform transition-transform duration-200 ease-in-out hover:scale-125 ${
-                    location.pathname === "/azienda" ? "scale-110 h-7 w-7" : ""
-                  }`}
-                />
+                <BuildingStorefrontIcon className="size-6" />
 
                 <span
-                  className={`lg:text-sm text-lg   text-slate-800${
-                    location.pathname === "/azienda" ? "font-bold" : ""
+                  className={`lg:text-sm text-lg ${
+                    location.pathname === "dashboard/azienda" && "font-medium"
                   }`}
                 >
                   Azienda
@@ -246,18 +243,16 @@ const SideMobile = () => {
                   localStorage.removeItem("token");
                   localStorage.removeItem("ruolo");
                 }}
-                className={`flex items-center  gap-3 p-2 rounded-3xl cursor-pointer hover:bg-salviaScuro ${
-                  location.pathname === "/" ? "bg-ambra" : ""
+                className={`flex font-p items-center gap-3 p-2 rounded-3xl cursor-pointer hover:bg-bg-list-light dark:hover:bg-btn-dark ${
+                  location.pathname === "/"
+                    ? "bg-bg-list-light text-accent-blue-dark dark:bg-btn-dark dark:text-accent-blue-light"
+                    : ""
                 }`}
               >
-                <XCircleIcon
-                  className={`h-6 w-6  text-slate-800  backdrop-blur-sm  transform transition-transform duration-200 ease-in-out hover:scale-125 ${
-                    location.pathname === "/" ? " scale-110" : ""
-                  }`}
-                />
+                <XCircleIcon className="size-6" />
 
                 <span
-                  className={`lg:text-sm text-lg  text-slate-800 ${
+                  className={`lg:text-sm text-lg  ${
                     location.pathname === "/" ? " font-bold" : ""
                   }`}
                 >
