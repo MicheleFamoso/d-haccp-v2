@@ -4,13 +4,15 @@ import Button from "../atoms/Button";
 import LogOut from "../molecules/LogOut";
 import EditUser from "../molecules/EditUser";
 import { CircleUser, Mail, SquareUser } from "lucide-react";
+import Loading from "./Loading";
 
 const User = () => {
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
   const popoverRef = useRef(null);
-  const [utenti, setUtenti] = useState([]);
-  const [loading, setLoading] = useState(false);
+
+  const [utente, setUtente] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
@@ -24,36 +26,30 @@ const User = () => {
   const getProfilo = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      console.warn("Nessun token trovato, fetch annullata.");
-      setError("Nessun token trovato, impossibile caricare il profilo.");
+      setError("Nessun token trovato");
+      setLoading(false);
       return;
     }
 
-    setLoading(true);
     setError(null);
+    setLoading(true);
 
     fetch("http://localhost:8080/admin/me", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
-        if (!res.ok)
-          throw new Error(`Errore nella risposta: ${res.statusText}`);
+        if (!res.ok) throw new Error(`Errore: ${res.statusText}`);
         return res.json();
       })
       .then((data) => {
-        setUtenti([data]);
+        setUtente(data);
         setIdUtente(data.id);
         setNome(data.nome);
         setCognome(data.cognome);
         setUsername(data.username);
         setEmail(data.email);
       })
-      .catch((err) => {
-        console.error("Errore nella fetch profilo:", err);
-        setError("Errore nel caricamento del profilo.");
-      })
+      .catch(() => setError("Errore nel caricamento"))
       .finally(() => setLoading(false));
   };
 
@@ -84,7 +80,7 @@ const User = () => {
         onClick={() => setClicked(!clicked)}
         className="hover:bg-accent-blue-light p-2 rounded-4xl bg-blue-300 shadow-xs cursor-pointer "
       >
-        <UserIcon className="size-5 text-text-primary-light  " />
+        <UserIcon className="size-5 text-text-primary-light" />
       </button>
 
       <div
@@ -94,29 +90,32 @@ const User = () => {
             : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col gap-2">
-          {utenti.map((utente) => (
-            <div key={utente.id}>
-              <div className="flex  gap-3 mt-8 mb-6 items-center">
+        <div className="flex flex-col gap-2 min-h-40 py-4">
+          {loading && <Loading />}
+
+          {!loading && utente && (
+            <div>
+              <div className="flex gap-3 mt-4 mb-6 items-center">
                 <CircleUser
                   size={45}
                   strokeWidth={1}
                   className="bg-accent-blue-medium rounded-full text-white"
                 />
-                <h3 className="text-text-primary-light font-medium dark:text-text-primary-dark text-3xl font-h">
+                <h3 className="text-text-primary-light dark:text-text-primary-dark text-2xl">
                   Ciao {utente.nome}
                 </h3>
               </div>
 
-              <div className="flex items-center gap-3 text-text-secondary-light dark:text-text-secondary-dark ">
+              <div className="flex items-center gap-3 text-text-secondary-light dark:text-text-secondary-dark">
                 <SquareUser size={18} />
-                <p className=" font-p truncate">{utente.username}</p>
+                <p className="truncate">{utente.username}</p>
               </div>
               <div className="flex items-center gap-3 text-text-secondary-light dark:text-text-secondary-dark">
                 <Mail size={18} />
-                <p className="font-p truncate">{utente.email}</p>
+                <p className="truncate">{utente.email}</p>
               </div>
-              <div className="flex gap-3 justify-end mt-12 mb-4 ">
+
+              <div className="flex gap-3 justify-end mt-10">
                 <Button
                   text="Modifica"
                   variant="accentText"
@@ -125,7 +124,9 @@ const User = () => {
                 <LogOut />
               </div>
             </div>
-          ))}
+          )}
+
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
         </div>
       </div>
 

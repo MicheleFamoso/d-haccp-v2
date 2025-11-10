@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import CardForniture from "../cardComponent/CardForniture";
 import { Plus } from "lucide-react";
 import AddFornitureMob from "../addComponent/AddFornitureMob";
+import Loading from "../Loading";
 const GetForniture = () => {
   const [forniture, setForniture] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,7 +54,7 @@ const GetForniture = () => {
       <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
         Forniture
       </h1>
-      {loading && <h3>Caricamento...</h3>}
+      {loading && <Loading />}
       <div className="grid md:grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-10 gap-2 mt-6 md:mx-12">
         {loading === false &&
           forniture.map((fornitura) => (

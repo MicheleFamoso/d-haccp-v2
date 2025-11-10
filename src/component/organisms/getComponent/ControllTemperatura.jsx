@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 import CardTemp from "../cardComponent/CardTemp";
 import AddTempMob from "../addComponent/AddTempMob";
+import Loading from "../Loading";
 
 const ControllTemperatura = () => {
   //const Fetch
@@ -69,6 +70,7 @@ const ControllTemperatura = () => {
       const data = await response.json();
       SetTemperature(data);
       setIsLoading(false);
+      setError(false);
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -134,12 +136,13 @@ const ControllTemperatura = () => {
       </div>
 
       <div className="grid md:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
-        {isLoading && <div> Caricamento</div>}
+        {isLoading && <Loading />}
         {isLoading === false &&
           temperature.map((temp) => (
             <CardTemp temp={temp} onDelete={() => handleDelete(temp.id)} />
           ))}
       </div>
+
       <div className="md:hidden fixed bottom-6 right-6 z-50">
         <button onClick={() => setAdd(true)}>
           <Plus className="size-16 p-2 bg-accent-blue-light shadow-xl text-white rounded-4xl " />

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import CardInfestanti from "../cardComponent/CardInfestanti";
 import { Plus } from "lucide-react";
 import AddInfMob from "../addComponent/AddInfMob";
+import Loading from "../Loading";
 const GetInfestanti = () => {
   const [infestanti, setInfestanti] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,11 +57,7 @@ const GetInfestanti = () => {
       <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 mt-4 md:mt-0 dark:text-text-primary-dark text-center text-shadow-xs">
         Infestanti
       </h1>
-      {loading && (
-        <div>
-          <h1>Caricamento in corso</h1>
-        </div>
-      )}
+      {loading && <Loading />}
       <div className="grid md:grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
         {loading === false &&
           infestanti.map((infestante) => (

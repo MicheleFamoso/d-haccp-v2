@@ -3,6 +3,7 @@ import { Plus } from "lucide-react";
 import CardPulizia from "../cardComponent/CardPulizia";
 import { useSelector, useDispatch } from "react-redux";
 import AddPuliMob from "../addComponent/AddPuliMob";
+import Loading from "../Loading";
 
 const GetPulizia = () => {
   const [pulizie, setPulizie] = useState([]);
@@ -57,10 +58,10 @@ const GetPulizia = () => {
   }, [render]);
   return (
     <div>
-      {loading && <h1>Caricamento</h1>}
       <h1 className="font-h text-3xl md:text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
         Pulizie
       </h1>
+      {loading && <Loading />}
       <div className="grid md:grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
         {loading === false &&
           pulizie.map((pulizie) => (

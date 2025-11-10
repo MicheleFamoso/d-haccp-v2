@@ -11,9 +11,10 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import DashboardCard from "../cardComponent/DashboardCard";
 import { useSelector } from "react-redux";
+import Loading from "../Loading";
 const GetDash = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-
+  const [loading, setLoading] = useState(true);
   const start = format(
     startOfWeek(currentMonth, { weekStartsOn: 1 }),
     "yyyy-MM-dd"
@@ -42,6 +43,7 @@ const GetDash = () => {
         const data = await res.json();
         setDatiCalendario(data);
         console.log(data);
+        setLoading(false);
       } catch (err) {
         console.error("Errore fetch calendario:", err);
       }
@@ -114,6 +116,7 @@ const GetDash = () => {
         ) : (
           <div className="week-wrapper md:mt-6">
             <div className="week-grid md:gap-6 ">
+              {loading && <Loading />}
               {sortedDates.map((date) => (
                 <div key={date} className="flex flex-col items-center">
                   {/* header del giorno */}
@@ -130,11 +133,14 @@ const GetDash = () => {
                   </div>
 
                   {/* lista controlli */}
-                  <div className="flex flex-col  items-center md:gap-4 mb-5 mt-2">
-                    {groupedByDate[date].map((controllo) => (
-                      <DashboardCard controllo={controllo} />
-                    ))}
-                  </div>
+
+                  {!loading && (
+                    <div className="flex flex-col  items-center md:gap-4 mb-5 mt-2">
+                      {groupedByDate[date].map((controllo) => (
+                        <DashboardCard controllo={controllo} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

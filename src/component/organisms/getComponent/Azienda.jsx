@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Button from "../../atoms/Button";
 import FormField from "../../molecules/FormField";
 import { MapPin, Phone, Mail, Store } from "lucide-react";
+import Loading from "../Loading";
 
 const Azienda = () => {
   const [azienda, setAzienda] = useState(null);
@@ -137,11 +138,7 @@ const Azienda = () => {
 
   return (
     <div className="bg-section-light mt-25 md:mt-0 px-3  py-5 rounded-3xl shadow-lg dark:bg-section-dark">
-      {loading && (
-        <p className="text-xl text-center w-full py-10">
-          Caricamento in corso...
-        </p>
-      )}
+      {loading && <Loading />}
       {error && (
         <p className="text-xl text-center w-full py-10 text-rosso">{error}</p>
       )}

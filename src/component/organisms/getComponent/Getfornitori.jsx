@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CardFornitore from "../cardComponent/CardFornitore";
 import { Plus } from "lucide-react";
 import AddFornMob from "../addComponent/AddFornMob";
+import Loading from "../Loading";
 const Getfornitori = () => {
   const dispatch = useDispatch();
   const fornitori = useSelector((state) => state.fornitori);
@@ -65,11 +66,7 @@ const Getfornitori = () => {
         Fornitori
       </h1>
 
-      {loading && (
-        <h1 className="text-center text-accent-blue-medium font-black font-p">
-          Caricamento forniture...
-        </h1>
-      )}
+      {loading && <Loading />}
 
       <div className="grid md:grid-cols-2 xl:grid-cols-1 3xl:grid-cols-2 md:gap-5 gap-2 md:mx-12 mt-6">
         {!loading &&
