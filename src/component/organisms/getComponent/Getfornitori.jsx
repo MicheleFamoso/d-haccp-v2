@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardFornitore from "../cardComponent/CardFornitore";
-
+import { Plus } from "lucide-react";
+import AddFornMob from "../addComponent/AddFornMob";
 const Getfornitori = () => {
   const dispatch = useDispatch();
   const fornitori = useSelector((state) => state.fornitori);
   const render = useSelector((state) => state.aggiorna.fornitori);
   const [loading, setLoading] = useState(true);
-
+  const [add, setAdd] = useState(false);
   const handleFornitori = async () => {
     const token = localStorage.getItem("token");
     try {
@@ -55,6 +56,7 @@ const Getfornitori = () => {
 
   useEffect(() => {
     handleFornitori();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [render]);
 
   return (
@@ -69,7 +71,7 @@ const Getfornitori = () => {
         </h1>
       )}
 
-      <div className="grid grid-cols-2 xl:grid-cols-1 3xl:grid-cols-2 md:gap-5 gap-2 mx-12 mt-6">
+      <div className="grid md:grid-cols-2 xl:grid-cols-1 3xl:grid-cols-2 md:gap-5 gap-2 md:mx-12 mt-6">
         {!loading &&
           fornitori.map((fornitore) => (
             <CardFornitore
@@ -79,6 +81,12 @@ const Getfornitori = () => {
             />
           ))}
       </div>
+      <div className="md:hidden fixed bottom-6 right-6 z-50">
+        <button onClick={() => setAdd(true)}>
+          <Plus className="size-16 p-2 bg-accent-blue-light shadow-xl text-white rounded-4xl " />
+        </button>
+      </div>
+      <AddFornMob isOpen={add} onClose={() => setAdd(false)} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useState } from "react";
 import FormField from "../../molecules/FormField";
 import Button from "../../atoms/Button";
 import { useDispatch } from "react-redux";
-const AddFornitori = () => {
+const AddFornitori = ({ onClose }) => {
   const [fornitore, setFornitore] = useState({
     nomeFornitore: "",
     sede: "",
@@ -42,6 +42,7 @@ const AddFornitori = () => {
         key: "fornitori",
         payload: Date.now(),
       });
+      onClose();
       console.log(fornitore);
     } catch (err) {
       console.log(err);

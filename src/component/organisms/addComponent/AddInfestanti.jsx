@@ -4,7 +4,7 @@ import FormField from "../../molecules/FormField";
 import Button from "../../atoms/Button";
 import { useDispatch } from "react-redux";
 
-const AddInfestanti = () => {
+const AddInfestanti = ({ onClose }) => {
   const [infestanti, setInfestanti] = useState({
     data: new Date().toISOString().split("T")[0],
     roditori: "CONFORME",
@@ -36,6 +36,7 @@ const AddInfestanti = () => {
         key: "infestanti",
         payload: Date.now(),
       });
+      onClose();
 
       console.log();
     } catch (err) {

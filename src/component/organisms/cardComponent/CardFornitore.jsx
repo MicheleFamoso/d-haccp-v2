@@ -23,11 +23,38 @@ const CardFornitore = ({ fornitore, onDelete }) => {
       className="font-h  bg-bg-light/50 border-2 border-white  dark:bg-btn-dark dark:border-bg-list-dark   md:px-5 md:pt-2 shadow-md px-4 pt-0 pb-12 rounded-3xl font-bold select-none text-text-secondary-light dark:text-text-primary-dark"
       key={fornitore.id}
     >
+      {ruolo === "ADMIN" && (
+        <div
+          ref={menuRef}
+          className="flex justify-end relative md:hidden mt-1 "
+        >
+          <button
+            onClick={() => setMenu(!menu)}
+            className="hover:bg-text-tertiary-light  rounded-full cursor-pointer"
+          >
+            <Ellipsis className="hover:text-white" />
+          </button>
+          {menu && (
+            <div className="absolute right-0 top-8 bg-white/60 dark:bg-bg-list-dark/90 border-1 backdrop-blur-sm border-white dark:border-bg-list-dark   rounded-2xl shadow-2xl">
+              <div
+                onClick={() => {
+                  onDelete(fornitore.id);
+                  setMenu(false);
+                }}
+                className="flex items-center hover:bg-alert-2 px-6  hover:text-white py-2 rounded-3xl gap-3"
+              >
+                <Trash size={22} className=" cursor-pointer" />
+                <button className=" cursor-pointer">Elimina</button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
       <div
-        className=" grid grid-cols-3 mt-4
-                 gap-18"
+        className=" grid md:grid-cols-3 mt-4
+                 md:gap-18"
       >
-        <div className="col-span-1 border-r-2 border-r-btn-light dark:border-r-bg-list-dark">
+        <div className="md:col-span-1 md:border-r-2 md:border-r-btn-light md:dark:border-r-bg-list-dark">
           <div className="flex gap-3 items-center p-1">
             <p className="text-3xl truncate ">{fornitore.nomeFornitore}</p>
           </div>
@@ -46,7 +73,7 @@ const CardFornitore = ({ fornitore, onDelete }) => {
         </div>
         <div className="col-span-2">
           {ruolo === "ADMIN" && (
-            <div ref={menuRef} className="flex justify-end relative">
+            <div ref={menuRef} className="md:flex justify-end relative hidden ">
               <button
                 onClick={() => setMenu(!menu)}
                 className="hover:bg-text-tertiary-light  rounded-full cursor-pointer"
@@ -70,12 +97,12 @@ const CardFornitore = ({ fornitore, onDelete }) => {
             </div>
           )}
 
-          <p className="text-xl mb-6">Prodotti forniti</p>
-          <div className="flex gap-3 mt-2 flex-wrap">
+          <p className="text-xl md:mb-6 mt-4 md:mt-0">Prodotti forniti</p>
+          <div className="flex md:gap-3 gap-1 mt-2 flex-wrap">
             {fornitore.prodottiForniti.map((prodotti, index) => (
               <p
                 key={index}
-                className=" text-white text-xl font-semibold bg-slate-400/75 dark:bg-slate-600  px-3 py-1  rounded-4xl"
+                className=" text-white md:text-xl font-semibold bg-slate-400/75 dark:bg-slate-600  px-3 py-1  rounded-4xl"
               >
                 {prodotti}
               </p>

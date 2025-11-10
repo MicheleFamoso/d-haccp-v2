@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import CardInfestanti from "../cardComponent/CardInfestanti";
-
+import { Plus } from "lucide-react";
+import AddInfMob from "../addComponent/AddInfMob";
 const GetInfestanti = () => {
   const [infestanti, setInfestanti] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [add, setAdd] = useState(false);
   const render = useSelector((state) => {
     return state.aggiorna.infestanti;
   });
@@ -52,15 +53,15 @@ const GetInfestanti = () => {
 
   return (
     <div>
-      <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 dark:text-text-primary-dark text-center text-shadow-xs">
-        Controllo animali infestanti
+      <h1 className="font-h text-4xl font-bold text-text-secondary-light mb-4 mt-4 md:mt-0 dark:text-text-primary-dark text-center text-shadow-xs">
+        Infestanti
       </h1>
       {loading && (
         <div>
           <h1>Caricamento in corso</h1>
         </div>
       )}
-      <div className="grid grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
+      <div className="grid md:grid-cols-2 xl:grid-cols-2 3xl:grid-cols-4 md:gap-5 gap-2 mt-6">
         {loading === false &&
           infestanti.map((infestante) => (
             <CardInfestanti
@@ -69,6 +70,12 @@ const GetInfestanti = () => {
             />
           ))}
       </div>
+      <div className="md:hidden fixed bottom-6 right-6 z-50">
+        <button onClick={() => setAdd(true)}>
+          <Plus className="size-16 p-2 bg-accent-blue-light shadow-xl text-white rounded-4xl " />
+        </button>
+      </div>
+      <AddInfMob isOpen={add} onClose={() => setAdd(false)} />
     </div>
   );
 };
