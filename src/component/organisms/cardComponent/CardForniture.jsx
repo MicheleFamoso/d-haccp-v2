@@ -77,7 +77,7 @@ const CardForniture = ({ fornitura, onDelete }) => {
             />
             <h2>Fornitore</h2>
           </div>
-          <p>{fornitura.fornitore.nomeFornitore}</p>
+          <p className="truncate ml-4">{fornitura.fornitore.nomeFornitore}</p>
         </div>
         <div className="flex justify-between mb-4">
           <div className="flex gap-2 items-center text-text-primary-light font-medium dark:text-text-primary-dark">
