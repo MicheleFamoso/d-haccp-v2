@@ -1,7 +1,7 @@
 import AddTemperatura from "./AddTemperatura";
 
 const AddTempMob = ({ isOpen, onClose }) => {
-  console.log("Modal state:", isOpen);
+
   if (!isOpen) return null;
   return (
     <div
